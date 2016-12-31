@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.UI.WebControls;
 using System.Web;
 using System.Web.UI;
-
+using VtrFramework.Domain;
 
 namespace VtrFramework.Extensions
 {

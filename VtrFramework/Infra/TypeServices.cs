@@ -52,7 +52,8 @@ namespace VtrFramework.Infra
 
 
             { typeof(string),  SqlDbType.NVarChar},
-            { typeof(byte[]),  SqlDbType.VarBinary}
+            { typeof(byte[]),  SqlDbType.VarBinary},
+            { typeof(Guid),  SqlDbType.UniqueIdentifier}
         };
 
         public static Type GetDeclaredType<TSelf>(TSelf self)

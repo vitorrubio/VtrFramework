@@ -47,11 +47,16 @@
   <ItemGroup>
     <Compile Include="Contexto.cs" />
     <Compile Include="Conversao.cs" />
+    <Compile Include="Domain\HierarchicalList.cs" />
+    <Compile Include="Domain\HierarchicalParameter.cs" />
+    <Compile Include="Domain\SelectOptions.cs" />
+    <Compile Include="Domain\UnidadeFederacao.cs" />
     <Compile Include="EnumTools.cs" />
     <Compile Include="ExceptionMessages.Designer.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\GridViewExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\WebExtensions.cs" />
     <Compile Include="Infra\BaseSystemDatabase.cs" />
     <Compile Include="Infra\AppConfigConnectionStringProvider.cs" />
     <Compile Include="Infra\ConnectionStringProviderDeTestes.cs" />
