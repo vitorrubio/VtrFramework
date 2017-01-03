@@ -31,8 +31,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.4.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnitTDNet.3.4.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -52,8 +52,8 @@
   <ItemGroup>
     <Compile Include="ConversaoTest.cs" />
     <Compile Include="Domain\HierarquicalListTest.cs" />
-    <Compile Include="Domain\HierarquicalParameterMicrosoftTest.cs" />
-    <Compile Include="Domain\HierarquicalParameterTest.cs" />
+    <Compile Include="Domain\HierarchicalParameterMicrosoftTest.cs" />
+    <Compile Include="Domain\HierarchicalParameterTest.cs" />
     <Compile Include="Domain\SelectOptionsTest.cs" />
     <Compile Include="Domain\UnidadeFederacaoTest.cs" />
     <Compile Include="EnumToolsTest.cs" />
@@ -69,6 +69,7 @@
     <Compile Include="Infra\SystemDatabaseTest.cs" />
     <Compile Include="Infra\TypeServicesTest.cs" />
     <Compile Include="Infra\UnitTestDetectorTest.cs" />
+    <Compile Include="OperatorOverloadTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

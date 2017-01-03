@@ -141,7 +141,7 @@ namespace VtrFramework.Domain
         /// <returns>string - a propriedade Valor</returns>
         public override string ToString()
         {
-            return _valor;
+            return this.ValorPath;
         }
 
         /// <summary>
@@ -151,19 +151,28 @@ namespace VtrFramework.Domain
         /// <returns></returns>
         public override bool Equals(object obj)
         {
+
             if (obj == null)
                 return false;
-
-            //if (!(obj is HierarchicalParameter))
-            //    return false;
 
             if (object.ReferenceEquals(this, obj))
                 return true;
 
-            if (string.IsNullOrEmpty(this._valor) && string.IsNullOrEmpty((obj as HierarchicalParameter)._valor))
+            if (!(obj is HierarchicalParameter))
+                return false;
+
+
+            if ((obj is HierarchicalParameter) && 
+                string.IsNullOrEmpty(this._valor) && 
+                string.IsNullOrEmpty((obj as HierarchicalParameter)._valor)&&
+                this._id == 0 &&
+                (obj as HierarchicalParameter).Id ==0)
                 return true;
 
-            return  (this._id.Equals((obj as HierarchicalParameter)._id));
+            if (obj is HierarchicalParameter)
+                return this._valor.Equals((obj as HierarchicalParameter).Valor) && (this._id.Equals((obj as HierarchicalParameter)._id));
+
+            return  false;
         }
 
         /// <summary>
@@ -173,7 +182,7 @@ namespace VtrFramework.Domain
         /// <returns>int - o hashcode do valor</returns>
         public override int GetHashCode()
         {
-            return this._valor.GetHashCode();
+            return this._id.GetHashCode();
         }
 
 
@@ -198,9 +207,6 @@ namespace VtrFramework.Domain
 
             return new HierarchicalList(tmp);
         }
-
-
-
 
 
 
@@ -265,31 +271,14 @@ namespace VtrFramework.Domain
         #region operator overloading http://msdn.microsoft.com/en-us/library/ms173147(v=vs.80).aspx
 
         /// <summary>
-        /// Retorna o Id se for atribuido a um int
-        /// </summary>
-        /// <param name="p">HierarchicalParameter - o parâmetro do lado direito da atribuição</param>
-        /// <returns>int - o Id</returns>
-        public static implicit operator Int32(HierarchicalParameter p)
-        {
-            return p.Id;
-        }
-
-        /// <summary>
         /// Retorna o valor se for atribuido a um string
         /// </summary>
         /// <param name="p">HierarchicalParameter - o parâmetro do lado direito da atribuição</param>
         /// <returns>string - o valor</returns>
         public static implicit operator string(HierarchicalParameter p)
         {
-            return p.Valor;
+            return p.ToString();
         }
-
-
-
-
-
-
-
 
         /// <summary>
         /// Verifica se dois HierarchicalParameter são iguais 
@@ -312,38 +301,6 @@ namespace VtrFramework.Domain
             return x.Equals(y);
         }
 
-
-        //public static bool operator ==(int x, HierarchicalParameter y)
-        //{
-        //    if (((object)x == null) && ((object)y == null))
-        //    {
-        //        return true;
-        //    }
-
-        //    if (((object)x == null) || ((object)y == null))
-        //    {
-        //        return false;
-        //    }
-
-        //    return x.Equals(y);
-        //}
-
-
-        //public static bool operator ==(HierarchicalParameter x, int y)
-        //{
-        //    if (((object)x == null) && ((object)y == null))
-        //    {
-        //        return true;
-        //    }
-
-        //    if (((object)x == null) || ((object)y == null))
-        //    {
-        //        return false;
-        //    }
-
-        //    return x.Equals(y);
-        //}
-
         /// <summary>
         /// Verifica se dois HierarchicalParameter são diferentes
         /// </summary>
@@ -355,16 +312,10 @@ namespace VtrFramework.Domain
             return !(x == y);
         }
 
-        //public static bool operator !=(int x, HierarchicalParameter y)
-        //{
-        //    return !(x == y);
-        //}
 
-        //public static bool operator !=(HierarchicalParameter x, int y)
-        //{
-        //    return !(x == y);
-        //}
         #endregion
+
+
     }
 
 

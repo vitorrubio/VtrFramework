@@ -9,18 +9,18 @@ using VtrFramework.Domain;
 namespace VtrFramework.Test.Domain
 {
     [TestFixture]
-    public class HierarquicalParameterTest
+    public class HierarchicalParameterTest
     {
         [Test]
         public void EqualsTest()
         {
             var lista = new HierarchicalList();
             var parametro1 = lista.Add(1, null, "C:");
-            var parametro2 = lista.Add(1, null, "D:");
+            var parametro2 = lista.Add(1, null, "C:");
             Assert.AreEqual(parametro1, parametro2);
             Assert.IsTrue(parametro1 == parametro2);
             Assert.IsTrue(parametro1.Equals(parametro2));
-            Assert.IsFalse( object.ReferenceEquals(parametro1, parametro2));
+            Assert.IsFalse(object.ReferenceEquals(parametro1, parametro2));
         }
 
         
@@ -52,36 +52,18 @@ namespace VtrFramework.Test.Domain
             Assert.IsTrue(parametro1 != parametro2);
             Assert.IsFalse(parametro1 == parametro2);
             Assert.IsFalse(parametro1.Equals(parametro2));
+
+            var parametro3 = lista.Add(1, null, "D:");
+            var parametro4 = lista.Add(2, null, "C:");
+
+
+            Assert.AreNotEqual(parametro3, parametro4);
+            Assert.IsTrue(parametro3 != parametro4);
+            Assert.IsFalse(parametro3 == parametro4);
+            Assert.IsFalse(parametro3.Equals(parametro4));
         }
 
 
-
-        [Test]
-        public void IntImplicitConversionTest()
-        {
-            var lista = new HierarchicalList();
-            var parametro1 = lista.Add(1, null, "C:");
-
-            Assert.IsTrue(1.Equals(parametro1));
-            Assert.IsTrue(parametro1.Equals(1));
-            Assert.IsTrue(parametro1 == 1);
-            Assert.IsTrue(1 == parametro1);
-
-            Assert.AreEqual(parametro1, 1); //wtf
-            Assert.AreEqual(1, parametro1); //wtf
-        }
-
-
-
-        [Test]
-        public void IntExplicitConversionTest()
-        {
-            var lista = new HierarchicalList();
-            var parametro1 = lista.Add(1, null, "C:");
-            int id = (int) parametro1;
-            Assert.AreEqual(1, id);
-            Assert.AreEqual(1, (int)parametro1);
-        }
 
         [Test]
         public void StringImplicitConversionTest()
@@ -89,13 +71,15 @@ namespace VtrFramework.Test.Domain
             var lista = new HierarchicalList();
             var parametro1 = lista.Add(1, null, "C:");
 
+            //aqui está testando a conversão de parametro1 para string, e não a igualdade entre as variáveis
             Assert.IsTrue("C:".Equals(parametro1));
-            Assert.IsTrue(parametro1.Equals("C:"));
             Assert.IsTrue(parametro1 == "C:");
             Assert.IsTrue("C:" == parametro1);
 
-            Assert.AreEqual("C:", parametro1); //wtf
-            Assert.AreEqual(parametro1, "C:"); //wtf
+            //numa implementação correta de operadores e conversões, as asserções abaixo DEVEM FALHAR
+            //Assert.IsTrue(parametro1.Equals("C:"));
+            //Assert.AreEqual("C:", parametro1);
+            //Assert.AreEqual(parametro1, "C:");
         }
 
         [Test]
@@ -189,8 +173,7 @@ namespace VtrFramework.Test.Domain
 
             Assert.IsTrue(parametro1 == parametro1);
             Assert.IsTrue(parametro1 == parametro2);
-            Assert.IsTrue(1 == parametro1);
-            Assert.IsTrue(parametro1 == 1);
+
         }
     }
 }
