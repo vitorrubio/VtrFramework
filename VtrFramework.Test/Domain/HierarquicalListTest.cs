@@ -41,7 +41,7 @@ namespace VtrFramework.Test.Domain
             var parametro3 = lista.Add(3, 1, "Usuários");
             var parametro4 = lista.Add(4, 2, "System");
 
-            Assert.AreEqual("C:", lista.GetRoot().FirstOrDefault());
+            Assert.AreEqual("C:", lista.GetRoot().FirstOrDefault().ToString());
         }
     }
 }
