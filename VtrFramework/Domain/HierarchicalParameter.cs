@@ -23,6 +23,8 @@ namespace VtrFramework.Domain
         private string _valor;
         private bool _ativo = true;
 
+        private string _separador = "/";
+
         #endregion
 
 
@@ -86,13 +88,11 @@ namespace VtrFramework.Domain
         /// <param name="ativo">bool - Ativo ou Inativo</param>
         internal HierarchicalParameter(HierarchicalList lista, int id, int? pai, string valor, bool ativo = true)
         {
-
-
             this._id = id;
             this._idPai = pai;
             this._valor = valor;
             this._ativo = ativo;
-            this.SetLista(lista);
+            this.SetLista(lista); 
         }
 
         #endregion
@@ -104,12 +104,12 @@ namespace VtrFramework.Domain
 
         private string GetValorPath()
         {
-            return ((this.Pai == null) ? "" : (this.Pai.GetValorPath() + "/")) + this.Valor;
+            return ((this.Pai == null) ? "" : (this.Pai.GetValorPath() + _separador)) + this.Valor;
         }
 
         private string GetIdPath()
         {
-            return ((this.Pai == null) ? "" : (this.Pai.GetIdPath() + "/")) + this.Id.ToString();
+            return ((this.Pai == null) ? "" : (this.Pai.GetIdPath() + _separador)) + this.Id.ToString();
         }
 
         #endregion
@@ -127,6 +127,7 @@ namespace VtrFramework.Domain
                 throw new ArgumentNullException("Lista", "A lista não pode ser nula");
 
             this._listaHierarquica = lista;
+            this._separador = lista.Separador;
         }
 
         #endregion
@@ -269,16 +270,6 @@ namespace VtrFramework.Domain
 
 
         #region operator overloading http://msdn.microsoft.com/en-us/library/ms173147(v=vs.80).aspx
-
-        /// <summary>
-        /// Retorna o valor se for atribuido a um string
-        /// </summary>
-        /// <param name="p">HierarchicalParameter - o parâmetro do lado direito da atribuição</param>
-        /// <returns>string - o valor</returns>
-        //public static implicit operator string(HierarchicalParameter p)
-        //{
-        //    return p.ToString();
-        //}
 
         /// <summary>
         /// Verifica se dois HierarchicalParameter são iguais 
