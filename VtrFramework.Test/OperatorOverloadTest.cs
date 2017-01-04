@@ -756,7 +756,9 @@ namespace VtrFramework.Test
         //https://msdn.microsoft.com/en-us/library/aa288476(v=vs.71).aspx
         //https://msdn.microsoft.com/en-us/library/ms173105.aspx
         //http://stackoverflow.com/questions/390108/net-implicit-conversion-guidelines
-        //
+        //https://msdn.microsoft.com/en-us/library/85w54y0a.aspx
+        //https://msdn.microsoft.com/en-us/library/ms229033.aspx
+        //https://msdn.microsoft.com/en-us/library/ms173147.aspx
 
 
         private Int32 _value = 0;

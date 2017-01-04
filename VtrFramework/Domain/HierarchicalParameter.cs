@@ -8,7 +8,7 @@ namespace VtrFramework.Domain
 {
     /// <summary>
     /// Classe base para parametros hierarquicos. 
-    /// Implementa IHeararchiData e mantém uma coleção interna HierarquicalList para fazer as consultas recursivas na memória.
+    /// Implementa IHeararchiData e mantém uma coleção interna HierarchicalList para fazer as consultas recursivas na memória.
     /// O contructor dessa classe é internal porque ela não deve de maneira alguma ser instanciada pelo programador. Ela deve ser manipulada através de sua coleção
     /// Classe concebida principalmente para popular TreeViews e DropDowns
     /// </summary>
@@ -118,7 +118,7 @@ namespace VtrFramework.Domain
 
         #region métodos internos
         /// <summary>
-        /// Substitui a lista interna pela  HierarquicalList referência para todos os HierarchicalParameter
+        /// Substitui a lista interna pela  HierarchicalList referência para todos os HierarchicalParameter
         /// </summary>
         /// <param name="lista"></param>
         internal void SetLista(HierarchicalList lista)
@@ -176,6 +176,28 @@ namespace VtrFramework.Domain
             return  false;
         }
 
+
+        public virtual bool Equals(HierarchicalParameter obj)
+        {
+
+            if (obj == null)
+                return false;
+
+            if (object.ReferenceEquals(this, obj))
+                return true;
+
+
+            if (string.IsNullOrEmpty(this._valor) &&
+                string.IsNullOrEmpty(obj._valor) &&
+                this._id == 0 &&
+                obj.Id == 0)
+                return true;
+
+
+            return this._valor.Equals(obj.Valor) && (this._id.Equals(obj._id));
+
+        }
+
         /// <summary>
         /// Obtém o hashcode do valor
         /// Todo: aqui uma melhoria seria, talvez, pegar o  hashcode do Id
@@ -195,7 +217,7 @@ namespace VtrFramework.Domain
 
         /// <summary>
         /// obtém todos os filhos desse parâmetro
-        /// através de um enumerator convertido para um HierarquicalList
+        /// através de um enumerator convertido para um HierarchicalList
         /// </summary>
         /// <param name="parentId"></param>
         /// <returns></returns>

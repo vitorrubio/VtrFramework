@@ -47,7 +47,7 @@ namespace VtrFramework.Extensions
         /// percorre uma lista hierárquica em usa profundidade para adicionar os itend em um dropdownlost
         /// </summary>
         /// <param name="ddl">DropDownList - combo onde serão adicionados os itens hierárquicos estilizados</param>
-        /// <param name="lista">HierarquicalList - lisa hierárquica a ser exibida em um combo</param>
+        /// <param name="lista">HierarchicalList - lisa hierárquica a ser exibida em um combo</param>
         /// <param name="useValorpath">bool - define se deve ser criado um hint/tooltip com o caminho completo do item</param>
         /// <param name="formato">define se é permitido ou não nodes com filhos, e se eles são selecionáveis ou não</param>
         public static void HierarchicalDataBind(this DropDownList ddl, HierarchicalList lista, bool useValorpath = false, FormatacaoDeArvore formato = FormatacaoDeArvore.PermitirNosComFilhos)
@@ -59,7 +59,7 @@ namespace VtrFramework.Extensions
         /// percorre uma lista hierárquica em usa profundidade para adicionar os itend em um ListBox
         /// </summary>
         /// <param name="ddl">ListBox - ListBox onde serão adicionados os itens hierárquicos estilizados</param>
-        /// <param name="lista">HierarquicalList - lisa hierárquica a ser exibida em um combo</param>
+        /// <param name="lista">HierarchicalList - lisa hierárquica a ser exibida em um combo</param>
         /// <param name="useValorpath">bool - define se deve ser criado um hint/tooltip com o caminho completo do item</param>
         /// <param name="formato">define se é permitido ou não nodes com filhos, e se eles são selecionáveis ou não</param>
         public static void HierarchicalDataBind(this ListBox ddl, HierarchicalList lista, bool useValorpath = false, FormatacaoDeArvore formato = FormatacaoDeArvore.PermitirNosComFilhos)
@@ -403,10 +403,10 @@ namespace VtrFramework.Extensions
         #region métodos estáticos privados
 
         /// <summary>
-        /// obtém as raízes de uma HierarquicalList
+        /// obtém as raízes de uma HierarchicalList
         /// </summary>
-        /// <param name="lista">HierarquicalList - lista hierárquica a se obterem as raizes</param>
-        /// <returns>HierarquicalList - lista apenas com as raízes</returns>
+        /// <param name="lista">HierarchicalList - lista hierárquica a se obterem as raizes</param>
+        /// <returns>HierarchicalList - lista apenas com as raízes</returns>
         private static HierarchicalList _getRoots(HierarchicalList lista)
         {
             return lista.GetRoot();
@@ -416,7 +416,7 @@ namespace VtrFramework.Extensions
         /// método privado recursivo que constroi e estiliza os itens de um DropDownList ou ListBox hierárquico
         /// </summary>
         /// <param name="ddl">DropDownList ou ListBox a ser preenchido</param>
-        /// <param name="lista">HierarquicalList a ter seus itens publicados</param>
+        /// <param name="lista">HierarchicalList a ter seus itens publicados</param>
         /// <param name="useValorpath">bool - define se usará um tooltip com o caminho completo ou não</param>
         /// <param name="formato">FormatacaoDeArvore - define se permite ou não seleção de itens com nodes filhos</param>
         /// <param name="nivel">int - nivel corrente na hierarquia</param>
@@ -482,7 +482,7 @@ namespace VtrFramework.Extensions
         /// método privado recursivo que constroi e estiliza os itens de um DropDownList ou ListBox hierárquico
         /// </summary>
         /// <param name="ddl">DropDownList ou ListBox a ser preenchido</param>
-        /// <param name="lista">HierarquicalList a ter seus itens publicados</param>
+        /// <param name="lista">HierarchicalList a ter seus itens publicados</param>
         /// <param name="useValorpath">bool - define se usará um tooltip com o caminho completo ou não</param>
         /// <param name="formato">FormatacaoDeArvore - define se permite ou não seleção de itens com nodes filhos</param>
         /// <param name="nivel">int - nivel corrente na hierarquia</param>

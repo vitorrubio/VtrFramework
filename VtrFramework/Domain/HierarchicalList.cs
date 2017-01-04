@@ -29,7 +29,7 @@ namespace VtrFramework.Domain
         #region constructors
 
         /// <summary>
-        /// cria uma HierarquicalList baseada numa lista já existente (padrão)
+        /// cria uma HierarchicalList baseada numa lista já existente (padrão)
         /// </summary>
         /// <param name="collection"></param>
         public HierarchicalList(IEnumerable<HierarchicalParameter> collection, string sep = "/")
@@ -39,7 +39,7 @@ namespace VtrFramework.Domain
         }
 
         /// <summary>
-        /// cria uma HierarquicalList (padrão)
+        /// cria uma HierarchicalList (padrão)
         /// </summary>
         public HierarchicalList(string sep = "/")
             : base()
@@ -47,7 +47,7 @@ namespace VtrFramework.Domain
             this._separator = sep;
         }
 
-        //cria uma HierarquicalList e seta a capacidade (padrão)
+        //cria uma HierarchicalList e seta a capacidade (padrão)
         public HierarchicalList(int capacity, string sep = "/")
             : base(capacity)
         {

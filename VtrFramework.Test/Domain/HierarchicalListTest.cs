@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace VtrFramework.Test.Domain
 {
     [TestFixture]
-    public class HierarquicalListTest
+    public class HierarchicalListTest
     {
         [Test]
         public void NewTest()

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Contexto.cs" />
     <Compile Include="Conversao.cs" />
+    <Compile Include="Domain\Entity.cs" />
     <Compile Include="Domain\HierarchicalList.cs" />
     <Compile Include="Domain\HierarchicalParameter.cs" />
     <Compile Include="Domain\SelectOptions.cs" />
