@@ -275,10 +275,10 @@ namespace VtrFramework.Domain
         /// </summary>
         /// <param name="p">HierarchicalParameter - o parâmetro do lado direito da atribuição</param>
         /// <returns>string - o valor</returns>
-        public static implicit operator string(HierarchicalParameter p)
-        {
-            return p.ToString();
-        }
+        //public static implicit operator string(HierarchicalParameter p)
+        //{
+        //    return p.ToString();
+        //}
 
         /// <summary>
         /// Verifica se dois HierarchicalParameter são iguais 

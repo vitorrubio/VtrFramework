@@ -90,7 +90,7 @@ namespace VtrFramework.Test.Domain
         }
 
         [TestMethod]
-        public void StringExplicitConversionTest()
+        public void ToStringTest()
         {
             var lista = new HierarchicalList();
             var parametro1 = lista.Add(1, null, "C:");

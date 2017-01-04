@@ -725,6 +725,24 @@ namespace VtrFramework.Test
             Assert.IsTrue(100 == myfoo);
         }
 
+        [Test]
+        public void LongToDoubleTest()
+        {
+            long firstLong = long.MaxValue - 2;
+            long secondLong = firstLong - 1;
+
+            double firstDouble = firstLong;
+            double secondDouble = secondLong;
+
+            // Prints False as expected
+            Console.WriteLine(firstLong == secondLong);
+            Assert.IsFalse(firstLong == secondLong);
+
+            // Prints True!
+            Console.WriteLine(firstDouble == secondDouble);
+            Assert.IsFalse(firstDouble == secondDouble);
+        }
+
     }
 
 
@@ -733,6 +751,14 @@ namespace VtrFramework.Test
 
     public class Foo
     {
+
+        //https://msdn.microsoft.com/en-us/library/z5z9kes2.aspx
+        //https://msdn.microsoft.com/en-us/library/aa288476(v=vs.71).aspx
+        //https://msdn.microsoft.com/en-us/library/ms173105.aspx
+        //http://stackoverflow.com/questions/390108/net-implicit-conversion-guidelines
+        //
+
+
         private Int32 _value = 0;
 
         public Foo(Int32 v)
