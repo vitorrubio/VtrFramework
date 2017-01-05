@@ -50,12 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitConverterTest.cs" />
     <Compile Include="ConversaoTest.cs" />
     <Compile Include="Domain\HierarchicalListTest.cs" />
     <Compile Include="Domain\HierarchicalParameterMicrosoftTest.cs" />
     <Compile Include="Domain\HierarchicalParameterTest.cs" />
     <Compile Include="Domain\SelectOptionsTest.cs" />
     <Compile Include="Domain\UnidadeFederacaoTest.cs" />
+    <Compile Include="EnumIsValidTest.cs" />
     <Compile Include="EnumToolsTest.cs" />
     <Compile Include="Extensions\EnumExtensionsTest.cs" />
     <Compile Include="Extensions\StringExtensionsTest.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Infra\TypeServicesTest.cs" />
     <Compile Include="Infra\UnitTestDetectorTest.cs" />
     <Compile Include="OperatorOverloadTest.cs" />
+    <Compile Include="ParamsAmbiguityTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
