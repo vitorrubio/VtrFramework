@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework", "VtrFramewor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.Test", "VtrFramework.Test\VtrFramework.Test.csproj", "{DC20CFC5-A565-42BB-913E-4716DE19D66A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.WebForms", "VtrFramework.WebForms\VtrFramework.WebForms.csproj", "{90C6F198-8074-48B5-9C6C-EDC48A665BBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.WebForms.Test", "VtrFramework.WebForms.Test\VtrFramework.WebForms.Test.csproj", "{8277BA0F-E111-4BF5-A307-E95A4135FF16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{DC20CFC5-A565-42BB-913E-4716DE19D66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC20CFC5-A565-42BB-913E-4716DE19D66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC20CFC5-A565-42BB-913E-4716DE19D66A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90C6F198-8074-48B5-9C6C-EDC48A665BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C6F198-8074-48B5-9C6C-EDC48A665BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C6F198-8074-48B5-9C6C-EDC48A665BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C6F198-8074-48B5-9C6C-EDC48A665BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8277BA0F-E111-4BF5-A307-E95A4135FF16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8277BA0F-E111-4BF5-A307-E95A4135FF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8277BA0F-E111-4BF5-A307-E95A4135FF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8277BA0F-E111-4BF5-A307-E95A4135FF16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,7 +3,7 @@ using System.Data;
 
 namespace VtrFramework.Infra
 {
-    public interface ISystemDatabase
+    public interface IVtrDatabaseRequest
     {
         DataSet ExecuteProcedureGetDataset(string comando, params VtrParameter[] parametros);
         DataTable ExecuteProcedureGetDataTable(string comando, params VtrParameter[] parametros);

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DC20CFC5-A565-42BB-913E-4716DE19D66A}</ProjectGuid>
+    <ProjectGuid>{8277BA0F-E111-4BF5-A307-E95A4135FF16}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VtrFramework.Test</RootNamespace>
-    <AssemblyName>VtrFramework.Test</AssemblyName>
+    <RootNamespace>VtrFramework.WebForms.Test</RootNamespace>
+    <AssemblyName>VtrFramework.WebForms.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,18 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="nunit.framework, Version=3.4.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnitTDNet.3.4.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,34 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="VtrConversionTest.cs" />
-    <Compile Include="Domain\VtrHierarchicalListTest.cs" />
-    <Compile Include="Domain\VtrHierarchicalParameterMicrosoftTest.cs" />
-    <Compile Include="Domain\VtrHierarchicalParameterTest.cs" />
-    <Compile Include="Domain\VtrSelectOptionsTest.cs" />
-    <Compile Include="Domain\VtrUnidadeFederacaoTest.cs" />
-    <Compile Include="VtrEnumToolsTest.cs" />
-    <Compile Include="Extensions\VtrEnumExtensionsTest.cs" />
-    <Compile Include="Extensions\VtrStringExtensionsTest.cs" />
-    <Compile Include="Infra\VtrDatabaseTest.cs" />
-    <Compile Include="Infra\VtrConnectionStringProviderTest.cs" />
-    <Compile Include="Infra\VtrContextTest.cs" />
-    <Compile Include="Infra\VtrDatabaseRequestFactoryTest.cs" />
-    <Compile Include="Infra\VtrMsSqlDatabaseRequestTest.cs" />
-    <Compile Include="Infra\VtrParameterTest.cs" />
-    <Compile Include="Infra\VtrSystemDatabaseFactoryTest.cs" />
-    <Compile Include="Infra\VtrSystemDatabaseTest.cs" />
-    <Compile Include="Infra\VtrTypeServicesTest.cs" />
-    <Compile Include="Infra\VtrUnitTestDetectorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VtrFramework\VtrFramework.csproj">
-      <Project>{14c54a1d-116b-4cf7-8c03-8baa8b6ea344}</Project>
-      <Name>VtrFramework</Name>
+    <ProjectReference Include="..\VtrFramework.WebForms\VtrFramework.WebForms.csproj">
+      <Project>{90c6f198-8074-48b5-9c6c-edc48a665bbd}</Project>
+      <Name>VtrFramework.WebForms</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

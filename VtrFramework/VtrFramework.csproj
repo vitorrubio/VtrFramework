@@ -45,36 +45,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contexto.cs" />
-    <Compile Include="Conversao.cs" />
-    <Compile Include="Domain\Entity.cs" />
-    <Compile Include="Domain\HierarchicalList.cs" />
-    <Compile Include="Domain\HierarchicalParameter.cs" />
-    <Compile Include="Domain\SelectOptions.cs" />
-    <Compile Include="Domain\UnidadeFederacao.cs" />
-    <Compile Include="EnumTools.cs" />
+    <Compile Include="VtrContext.cs" />
+    <Compile Include="VtrConvert.cs" />
+    <Compile Include="Domain\VtrEntity.cs" />
+    <Compile Include="Domain\VtrHierarchicalList.cs" />
+    <Compile Include="Domain\VtrHierarchicalParameter.cs" />
+    <Compile Include="Domain\VtrSelectOptions.cs" />
+    <Compile Include="Domain\VtrUnidadeFederacao.cs" />
+    <Compile Include="VtrEnumTools.cs" />
     <Compile Include="ExceptionMessages.Designer.cs" />
-    <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Extensions\GridViewExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Extensions\WebExtensions.cs" />
-    <Compile Include="Infra\BaseSystemDatabase.cs" />
-    <Compile Include="Infra\AppConfigConnectionStringProvider.cs" />
-    <Compile Include="Infra\ConnectionStringProviderDeTestes.cs" />
-    <Compile Include="Infra\DatabaseRequestFactory.cs" />
-    <Compile Include="Infra\IConnectionStringProvider.cs" />
-    <Compile Include="Infra\IDatabaseRequest.cs" />
+    <Compile Include="Extensions\VtrEnumExtensions.cs" />
+    <Compile Include="Extensions\VtrStringExtensions.cs" />
+    <Compile Include="Infra\VtrBaseSystemDatabase.cs" />
+    <Compile Include="Infra\VtrAppConfigConnectionStringProvider.cs" />
+    <Compile Include="Infra\VtrConnectionStringProviderDeTestes.cs" />
+    <Compile Include="Infra\VtrDatabaseRequestFactory.cs" />
+    <Compile Include="Infra\IVtrConnectionStringProvider.cs" />
+    <Compile Include="Infra\IVtrDatabaseRequest.cs" />
     <Compile Include="Infra\ISystemDatabase.cs" />
-    <Compile Include="Infra\MsSqlDatabaseRequest.cs" />
-    <Compile Include="Infra\Parametro.cs" />
-    <Compile Include="Infra\SystemDatabase.cs" />
-    <Compile Include="Infra\SystemDatabaseFactory.cs" />
-    <Compile Include="Infra\TypeServices.cs" />
-    <Compile Include="Infra\UnitTestDetector.cs" />
+    <Compile Include="Infra\VtrMsSqlDatabaseRequest.cs" />
+    <Compile Include="Infra\VtrParameter.cs" />
+    <Compile Include="Infra\VtrSystemDatabase.cs" />
+    <Compile Include="Infra\VtrSystemDatabaseFactory.cs" />
+    <Compile Include="Infra\VtrTypeServices.cs" />
+    <Compile Include="Infra\VtrUnitTestDetector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ExceptionMessages.resx" />
+    <EmbeddedResource Include="VtrExceptionMessages.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
