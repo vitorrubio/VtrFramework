@@ -9,10 +9,10 @@ using VtrFramework.Domain;
 
 namespace VtrFramework.Test.Domain
 {
-    [TestClass]
+    //[TestClass]
     public class VtrHierarchicalParameterMicrosoftTest
     {
-        [TestMethod]
+        //[TestMethod]
         public void EqualsTest()
         {
             var lista = new VtrHierarchicalList();
@@ -27,7 +27,7 @@ namespace VtrFramework.Test.Domain
         
 
 
-        [TestMethod]
+        //[TestMethod]
         public void ReferenceEqualsTest()
         {
             var lista = new VtrHierarchicalList();
@@ -43,7 +43,7 @@ namespace VtrFramework.Test.Domain
 
 
 
-        [TestMethod]
+        //[TestMethod]
         public void NotEqualsTest()
         {
             var lista = new VtrHierarchicalList();
@@ -66,7 +66,7 @@ namespace VtrFramework.Test.Domain
 
 
 
-        [TestMethod]
+        //[TestMethod]
         public void ToStringTest()
         {
             var lista = new VtrHierarchicalList();
