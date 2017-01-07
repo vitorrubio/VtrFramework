@@ -5,17 +5,18 @@ using System.Text;
 using System.Data;
 using VtrFramework.Infra;
 
+
 namespace VtrFramework.MetaData
 {
     /// <summary>
     /// obtém do banco de dados listas de tabelas e campos
     /// </summary>
-    public class VtrMsSqlTableRepository
+    public class VtrMsSqlTableRepository : IVtrTableRepository
     {
 
         #region campos privados
 
-        IVtrSystemDatabase _dataBase;
+        private readonly IVtrSystemDatabase _dataBase;
 
         #endregion
 
@@ -33,6 +34,8 @@ namespace VtrFramework.MetaData
         {
             if (db == null)
                 throw new ArgumentNullException("IVtrSystemDatabase não pode ser null.");
+
+            _dataBase = db;
         }
 
         #endregion
@@ -120,7 +123,7 @@ where
 	sys.tables.name =  @tableName", new VtrParameter("@tableName", table.Nome));
             foreach (DataRow d in dados)
             {
-                VtrField tmp = new VtrField(table);
+                VtrMsSqlField tmp = new VtrMsSqlField(table);
                 tmp.Nome = d["COLUMN_NAME"].ToString();
                 tmp.Tipo = d["DATA_TYPE"].ToString();
                 tmp.Nulavel = Convert.ToBoolean( d["IS_NULLABLE"] ?? false);

@@ -11,9 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.WebForms", "Vt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.WebForms.Test", "VtrFramework.WebForms.Test\VtrFramework.WebForms.Test.csproj", "{8277BA0F-E111-4BF5-A307-E95A4135FF16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.Metadata", "VtrFramework.Metadata\VtrFramework.Metadata.csproj", "{1171EC6F-0B2F-4276-9D84-059C3AF69DF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.MetaData", "VtrFramework.Metadata\VtrFramework.MetaData.csproj", "{1171EC6F-0B2F-4276-9D84-059C3AF69DF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.Metadata.Test", "VtrFramework.Metadata.Test\VtrFramework.Metadata.Test.csproj", "{D08A0EE8-04F0-4A90-B32E-865F4B17A669}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.MetaData.Test", "VtrFramework.Metadata.Test\VtrFramework.MetaData.Test.csproj", "{D08A0EE8-04F0-4A90-B32E-865F4B17A669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.CodeGenerator", "VtrFramework.CodeGenerator\VtrFramework.CodeGenerator.csproj", "{AF0555B9-2BF2-4C5C-95CB-31EB55C8DF15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.CodeGenerator.Test", "VtrFramework.CodeGenerator.Test\VtrFramework.CodeGenerator.Test.csproj", "{F7917584-7CDD-4476-8286-5FE68E64E3F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{D08A0EE8-04F0-4A90-B32E-865F4B17A669}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D08A0EE8-04F0-4A90-B32E-865F4B17A669}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D08A0EE8-04F0-4A90-B32E-865F4B17A669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF0555B9-2BF2-4C5C-95CB-31EB55C8DF15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF0555B9-2BF2-4C5C-95CB-31EB55C8DF15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF0555B9-2BF2-4C5C-95CB-31EB55C8DF15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF0555B9-2BF2-4C5C-95CB-31EB55C8DF15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7917584-7CDD-4476-8286-5FE68E64E3F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7917584-7CDD-4476-8286-5FE68E64E3F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7917584-7CDD-4476-8286-5FE68E64E3F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7917584-7CDD-4476-8286-5FE68E64E3F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

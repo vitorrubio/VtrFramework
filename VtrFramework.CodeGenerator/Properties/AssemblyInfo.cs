@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("VtrFramework.MetaData")]
+[assembly: AssemblyTitle("VtrFramework.CodeGenerator")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VtrFramework.MetaData")]
+[assembly: AssemblyProduct("VtrFramework.CodeGenerator")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1171ec6f-0b2f-4276-9d84-059c3af69df1")]
+[assembly: Guid("af0555b9-2bf2-4c5c-95cb-31eb55c8df15")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -10,7 +10,7 @@ namespace VtrFramework.Test
     
 
     [TestFixture]
-    public class VtrConversionTest
+    public class VtrConvertTest
     {
         #region testes gerais
 

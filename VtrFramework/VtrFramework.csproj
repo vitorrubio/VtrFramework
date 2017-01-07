@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\IVtrRepository.cs" />
     <Compile Include="VtrContext.cs" />
     <Compile Include="VtrConvert.cs" />
     <Compile Include="Domain\VtrEntity.cs" />

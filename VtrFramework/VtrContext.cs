@@ -60,6 +60,26 @@ namespace VtrFramework
         }
 
 
+        /// <summary>
+        /// esse método que vai trazer o IVtrSystemDatabase correto dependendo das configurações do web.config
+        /// </summary>
+        /// <returns></returns>
+        public static IVtrSystemDatabase GetDB()
+        {
+            return new VtrSystemDatabase(new VtrAppConfigConnectionStringProvider());
+        }
+
+
+        public static void Log(string verb, object obj)
+        {
+
+        }
+
+
+        public static string GetCurrentLogin()
+        {
+            return System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+        }
 
         #endregion
 

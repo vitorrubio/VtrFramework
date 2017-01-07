@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VtrFramework.Metadata
+namespace VtrFramework.MetaData
 {
     /// <summary>
     /// interface a ser implementada por todos os descendentes de VtrField ou todos os wrappers de VtrField que 

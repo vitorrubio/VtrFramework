@@ -5,20 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using VtrFramework.MetaData;
 
-namespace VtrFramework.Metadata
+namespace VtrFramework.MetaData
 {
     public class VtrMsSqlField : VtrField, IVtrFieldTypeInfo
     {
 
+        #region public constructors
 
-        #region constructors
-
-        /// <summary>
-        /// aqui temos uma volação de encapsulamento: se uma classe filha tem uma propriedade imutável, classes descententes não podem alterá-la
-        /// </summary>
-        /// <param name="table"></param>
-        public VtrMsSqlField(VtrTable table):base(table)
+        public VtrMsSqlField(VtrTable tabela):base(tabela)
         {
+
         }
 
         #endregion

@@ -50,7 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="VtrConversionTest.cs" />
+    <Compile Include="VtrContextTest.cs" />
+    <Compile Include="VtrConvertTest.cs" />
     <Compile Include="Domain\VtrHierarchicalListTest.cs" />
     <Compile Include="Domain\VtrHierarchicalParameterMicrosoftTest.cs" />
     <Compile Include="Domain\VtrHierarchicalParameterTest.cs" />

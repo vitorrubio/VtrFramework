@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using VtrFramework.Infra;
 using VtrFramework.MetaData;
 
-namespace VtrFramework.Metadata.Test
+namespace VtrFramework.MetaData.Test
 {
     [TestFixture]
     public class VtrMsSqlTableRepositoryTest
@@ -39,6 +39,24 @@ namespace VtrFramework.Metadata.Test
             Assert.IsNotNull(UmaTabelaQualquer);
 
             Assert.Greater(UmaTabelaQualquer.Campos.Count, 0 );
+            Assert.Contains(new VtrField(UmaTabelaQualquer) { Nome = "Observacao" }, UmaTabelaQualquer.Campos);
+        }
+
+
+
+        [Test]
+        public void GetAllWithGetDBTest()
+        {
+            VtrMsSqlTableRepository rep = new VtrMsSqlTableRepository(VtrContext.GetDB());
+            var tabelas = rep.GetAll();
+
+            Assert.Greater(tabelas.Count, 0);
+            Assert.Contains(new VtrTable { Nome = "UmaTabelaQualquer", Schema = "DBO", DatabaseName = "VtrTemplate" }, tabelas);
+
+            var UmaTabelaQualquer = tabelas.Where(t => t.Nome == "UmaTabelaQualquer").FirstOrDefault();
+            Assert.IsNotNull(UmaTabelaQualquer);
+
+            Assert.Greater(UmaTabelaQualquer.Campos.Count, 0);
             Assert.Contains(new VtrField(UmaTabelaQualquer) { Nome = "Observacao" }, UmaTabelaQualquer.Campos);
         }
     }

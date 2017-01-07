@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VtrFramework.MetaData;
 
-namespace VtrFramework.Metadata.Test
+namespace VtrFramework.MetaData.Test
 {
     [TestFixture]
     public class VtrFieldTest

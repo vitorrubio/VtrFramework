@@ -7,8 +7,8 @@
     <ProjectGuid>{1171EC6F-0B2F-4276-9D84-059C3AF69DF1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VtrFramework.Metadata</RootNamespace>
-    <AssemblyName>VtrFramework.Metadata</AssemblyName>
+    <RootNamespace>VtrFramework.MetaData</RootNamespace>
+    <AssemblyName>VtrFramework.MetaData</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IVtrFieldTypeInfo.cs" />
+    <Compile Include="IVtrTableRepository.cs" />
     <Compile Include="VtrField.cs" />
+    <Compile Include="VtrMetaDataFactory.cs" />
     <Compile Include="VtrForeignKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VtrMsSqlField.cs" />
