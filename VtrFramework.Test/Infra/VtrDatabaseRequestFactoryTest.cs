@@ -15,7 +15,7 @@ namespace VtrFramework.Test.Infra
         public void CreateDatabaseRequestTest()
         {
             VtrDatabaseRequestFactory fac = new VtrDatabaseRequestFactory();
-            var dbrec = fac.CreateDatabaseRequest(new VtrConnectionStringProviderDeTestes());
+            var dbrec = fac.CreateDatabaseRequest(new VtrTestConnectionStringProvider());
             Assert.IsNotNull(dbrec);
             Assert.IsInstanceOf<IVtrDatabaseRequest>(dbrec);
         }

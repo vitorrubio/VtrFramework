@@ -295,7 +295,7 @@ namespace VtrFramework.Infra
             {
                 //salvaguarda para substituir null por DBNull mesmo se usado por outras bibliotecas mais antigas.
                 SqlParameter sqlParam = cmd.Parameters.AddWithValue(item.Nome, item.Valor ?? DBNull.Value);
-                sqlParam.SqlDbType = ((item != null) && (item.Valor != null) && (item.Valor != DBNull.Value)) ? VtrTypeServices.TypeToSqlDbType(item.Valor.GetType()) :SqlDbType.NVarChar;
+                sqlParam.SqlDbType = ((item != null) && (item.Valor != null) && (item.Valor != DBNull.Value)) ? VtrTypeServices.DotNetTypeToSqlDbType(item.Valor.GetType()) :SqlDbType.NVarChar;
             }
 
             try
@@ -364,7 +364,7 @@ namespace VtrFramework.Infra
             {
                 //salvaguarda para substituir null por DBNull mesmo se usado por outras bibliotecas mais antigas.
                 SqlParameter sqlParam = comm.Parameters.AddWithValue(item.Nome, item.Valor ?? DBNull.Value);
-                sqlParam.SqlDbType = ((item != null) && (item.Valor != null) && (item.Valor != DBNull.Value)) ? VtrTypeServices.TypeToSqlDbType(item.Valor.GetType()) : SqlDbType.NVarChar;
+                sqlParam.SqlDbType = ((item != null) && (item.Valor != null) && (item.Valor != DBNull.Value)) ? VtrTypeServices.DotNetTypeToSqlDbType(item.Valor.GetType()) : SqlDbType.NVarChar;
             }
 
             try

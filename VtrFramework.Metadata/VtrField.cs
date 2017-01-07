@@ -6,8 +6,52 @@ using System.Data;
 
 namespace VtrFramework.MetaData
 {
+    /// <summary>
+    /// representa um campo de uma tabela de um banco de dados
+    /// um campo de uma cllection de campos de um VtrTable
+    /// </summary>
     public class VtrField
     {
+
+
+        #region private fields
+
+        /// <summary>
+        /// manfém uma referência para a tabela desse campo.
+        /// É necessário para se consultar igualdade, pois dois campos com o mesmo nome só são iguais se forem da mesma tabela
+        /// </summary>
+        private readonly VtrTable _table;
+
+        #endregion
+
+
+        #region constructors
+
+        /// <summary>
+        /// não tem constructor padrão. O constructor deve receber a tabela e a mesma deve ser imutável
+        /// </summary>
+        /// <param name="table"></param>
+        public VtrField(VtrTable table)
+        {
+            if (table == null)
+                throw new Exception("A tabela do campo não pode ser nula!");
+
+            this._table = table;
+        }
+
+        #endregion
+
+
+
+
+
+        #region public properties
+
+        /// <summary>
+        /// a propriedade somente leitura e imutável da Tabela
+        /// </summary>
+        public virtual  VtrTable Table { get { return this._table; } }
+
         /// <summary>
         /// nome do campo tal qual nos metadados da tabela
         /// </summary>
@@ -55,183 +99,109 @@ namespace VtrFramework.MetaData
         /// </summary>
         public virtual VtrForeignKey InformacaoChaveEstrangeira { get; set; }
 
+
+        #endregion
+
+
+
+
+        #region metodos sobrecarregados padrão object
+
+
         /// <summary>
-        /// converte um tipo sql para um tipo SqlDbType para ser usado no Ado.Net
-        /// todo: atualizar com a lista completa de fields
+        /// se dois VtrField tem a mesma string, então são iguais
         /// </summary>
-        /// <param name="tipoSql"></param>
-        /// <param name="tipoSqlDbType"></param>
-        /// <returns></returns>
-        public static SqlDbType SqlTypeSqlDbType(string tipoSql, SqlDbType tipoSqlDbType)
+        /// <param name="obj">objeto a ser comparado</param>
+        /// <returns>bool - True se forem iguais</returns>
+        public override bool Equals(object obj)
         {
-            return SqlDbType.NVarChar;
+            if (obj == null)
+                return false;
+
+            if (object.ReferenceEquals(this, obj))
+                return true;
+
+            if (!(obj is VtrField))
+                return false;
+
+            return this.ToString().Equals((obj as VtrField).ToString());
         }
 
         /// <summary>
-        /// converte um tipo .net para um tipo SqlDbType
-        /// todo: colocar a lista completa de tipos
+        /// se dois VtrField tem a mesma string, então são iguais
         /// </summary>
-        /// <param name="tipoDotNet"></param>
-        /// <param name="tipoSqlDbType"></param>
-        /// <returns></returns>
-        public static SqlDbType DotNetTypeToSqlDbType(Type tipoDotNet, SqlDbType tipoSqlDbType)
+        /// <param name="ent">Entity a ser comparada</param>
+        /// <returns>bool - True se forem iguais</returns>
+        public virtual bool Equals(VtrField ent)
         {
-            return SqlDbType.NVarChar;
-        }
+            if (ent == null)
+                return false;
 
-        /// <summary>
-        /// reconstitui o tipo SQL com precisão e escala se for numerico/decimal ou com tamanho se for char, varchar, nchar, nvarchar
-        /// </summary>
-        /// <returns></returns>
-        public virtual string GetSqlType()
-        {
-            if ((this.Tipo.StartsWith("varchar")) || (this.Tipo.StartsWith("nvarchar")) || (this.Tipo.StartsWith("char")) || (this.Tipo.StartsWith("nchar")))
-            {
-                return string.Format("{0}({1})", this.Tipo, (this.Tamanho > 0) ? this.Tamanho.ToString() : "max"); 
-            }
-            else if ((this.Tipo.ToLower().StartsWith("numeric")) || (this.Tipo.ToLower().StartsWith("decimal")))
-            {
-                return string.Format("{0}({1},{2})", this.Tipo, this.Precisao, this.Escala); 
-            }
-            else
-            {
-                return this.Tipo;
-            }
+            if (object.ReferenceEquals(this, ent))
+                return true;
 
+            return this.ToString().Equals(ent.ToString());
         }
 
 
         /// <summary>
-        /// define se o tipo é suportado nas triggers de delete. 
-        /// tipos text, ntext e image não saõ suportados
+        /// pega o hash do ToString que deve ser único. 
         /// </summary>
         /// <returns></returns>
-        public virtual bool IsSupportedInTrigger()
+        public override int GetHashCode()
         {
-            string tipo = this.GetSqlType().ToLower();
-            return !((tipo == "text") || (tipo == "ntext") ||  (tipo == "image"));
+            return this.ToString().GetHashCode();
         }
 
 
         /// <summary>
-        /// define se um campo é de algum tipo inteiro
+        /// é a fusão da ToString da tabela com o nome do campo. Deve ser única por campo
         /// </summary>
         /// <returns></returns>
-        public virtual bool IsIntType()
+        public override string ToString()
         {
-            return (this.Tipo.ToLower() == "integer") ||
-                    (this.Tipo.ToLower() == "int") ||
-                    (this.Tipo.ToLower() == "bigint") ||
-                    (this.Tipo.ToLower() == "tinyint") ||
-                    (this.Tipo.ToLower() == "smallint");
+            return string.Format("{0}.{1}", this.Table.ToString(), this.Nome).ToLower();
         }
 
 
+        #endregion
+
+
+        #region operator overloading
+
         /// <summary>
-        /// define se um campo é de algum tipo decimal/fracionário/ponto flutuante
+        /// usa o método Equals para verificar se dois objetos são iguais e sobrecarregar a ação do operador de igualdade
         /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>bool</returns>
+        public static bool operator ==(VtrField x, VtrField y)
+        {
+            if (((object)x == null) && ((object)y == null))
+            {
+                return true;
+            }
+
+            if (((object)x == null) || ((object)y == null))
+            {
+                return false;
+            }
+
+            return x.Equals(y);
+        }
+
+        /// <summary>
+        /// usa o método Equals para verificar se dois objetos são iguais e sobrecarregar a ação do operador de desigualdade
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         /// <returns></returns>
-        public virtual bool IsFloatType()
+        public static bool operator !=(VtrField x, VtrField y)
         {
-            return (this.Tipo.ToLower() == "extended") ||
-                (this.Tipo.ToLower().StartsWith("double")) ||
-                (this.Tipo.ToLower().StartsWith("double precision")) ||
-                (this.Tipo.ToLower().StartsWith("float")) ||
-                (this.Tipo.ToLower().StartsWith("real")) ||
-                (this.Tipo.ToLower().StartsWith("numeric")) ||
-                (this.Tipo.ToLower().StartsWith("decimal")) ||
-                (this.Tipo.ToLower().StartsWith("money")) ||
-                (this.Tipo.ToLower().StartsWith("smallmoney"));
+            return !(x == y);
         }
 
+        #endregion
 
-        /// <summary>
-        /// define se um campo é de valores monetários
-        /// </summary>
-        /// <returns></returns>
-        public virtual bool IsMoneyType()
-        {
-            //todo: verificar a aplicabilidade de todos os numeric(x,2) serem automaticamente dinheiro
-            return (this.Tipo.ToLower().StartsWith("money")) ||
-                (this.Tipo.ToLower().StartsWith("smallmoney"));
-        }
-
-
-        /// <summary>
-        /// verifica se o campo é de algum tipo numérico
-        /// </summary>
-        /// <returns></returns>
-        public virtual bool IsNumericType()
-        {
-            return this.IsIntType() || this.IsFloatType();
-        }
-
-
-        /// <summary>
-        /// verifica se o campo é de um tipo date
-        /// </summary>
-        /// <returns></returns>
-        public virtual bool IsDateType()
-        {
-            return ((this.Tipo.ToLower() == "datetime") || (this.Tipo.ToLower() == "datetime2") || (this.Tipo.ToLower() == "date"));
-        }
-
-
-        /// <summary>
-        /// converte o tipo SQL para um tipo .Net
-        /// </summary>
-        /// <returns>string - representação do tipo .net em string</returns>
-        public virtual string GetDotNetType()
-        {
-            if ((this.Tipo.StartsWith("varchar")) || (this.Tipo.StartsWith("nvarchar")) || (this.Tipo.StartsWith("text")) || (this.Tipo.StartsWith("ntext")))
-            {
-                return "string";
-            }
-            else if ((this.Tipo.ToLower() == "datetime") || (this.Tipo.ToLower() == "datetime2") || (this.Tipo.ToLower() == "date"))
-            {
-                return Nulavel ? "DateTime?" : "DateTime";
-            }
-            else if ((this.Tipo.ToLower() == "extended") || 
-                (this.Tipo.ToLower().StartsWith("double")) || 
-                (this.Tipo.ToLower().StartsWith("double precision")) || 
-                (this.Tipo.ToLower().StartsWith("float")) ||
-                (this.Tipo.ToLower().StartsWith("real")) ||
-                (this.Tipo.ToLower().StartsWith("numeric")) ||
-                (this.Tipo.ToLower().StartsWith("decimal")) ||
-                (this.Tipo.ToLower().StartsWith("money")) ||
-                (this.Tipo.ToLower().StartsWith("smallmoney")))
-            {
-                return  Nulavel?  "double?" : "double";
-            }
-            else if (this.Tipo.ToLower() == "money")
-            {
-                return Nulavel ? "double?" : "double";
-            }
-            else if ((this.Tipo.ToLower() == "integer") || 
-                    (this.Tipo.ToLower() == "int") ||
-                    (this.Tipo.ToLower() == "tinyint") ||
-                    (this.Tipo.ToLower() == "smallint"))
-            {
-                return Nulavel?  "int?":"int";
-            }
-            else if (this.Tipo.ToLower() == "bigint")
-            {
-                return Nulavel ? "Int64?" : "Int64";
-            }
-            else if (this.Tipo.ToLower() == "bit")
-            {
-                return Nulavel? "bool?": "bool";
-            }
-            else if (this.Tipo.ToLower() == "uniqueidentifier")
-            {
-                return Nulavel ? "Guid?" : "Guid";
-            }
-            else if ((this.Tipo.ToLower().StartsWith("image")) || (this.Tipo.ToLower().StartsWith("varbinary")))
-            {
-                return "Byte[]";
-            }
-
-            return "object";
-        }
     }
 }

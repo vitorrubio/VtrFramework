@@ -9,7 +9,7 @@ namespace VtrFramework.Infra
     /// <summary>
     /// implementa a interface IConnectionStringProvider provendo uma connectionstring fixa para testes
     /// </summary>
-    public class VtrConnectionStringProviderDeTestes : IVtrConnectionStringProvider
+    public class VtrTestConnectionStringProvider : IVtrConnectionStringProvider
     {
         /// <summary>
         /// retorna a connectionstring

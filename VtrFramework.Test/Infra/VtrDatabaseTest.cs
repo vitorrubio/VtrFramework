@@ -13,7 +13,7 @@ namespace VtrFramework.Test.Infra
         [Test]
         public void CreateTest()
         {
-            var bco = new VtrSystemDatabase(new VtrConnectionStringProviderDeTestes());
+            var bco = new VtrSystemDatabase(new VtrTestConnectionStringProvider());
             string srvname = bco.Query ("select @@servername as name")[0]["name"].ToString();
             Assert.IsNotEmpty(srvname);
             Console.WriteLine(srvname);

@@ -19,7 +19,7 @@ namespace VtrFramework.Test.Infra
             var tipo = typeof(DateTime);
             var dbTipo = SqlDbType.DateTime;
 
-            var resultado = VtrTypeServices.TypeToSqlDbType(tipo);
+            var resultado = VtrTypeServices.DotNetTypeToSqlDbType(tipo);
 
             Assert.AreEqual(dbTipo, resultado);
         }

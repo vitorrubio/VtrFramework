@@ -8,7 +8,7 @@ using VtrFramework.Infra;
 
 namespace VtrFramework.Infra
 {
-    public abstract class VtrBaseSystemDatabase : ISystemDatabase
+    public abstract class VtrBaseSystemDatabase : IVtrSystemDatabase
     {
 
 

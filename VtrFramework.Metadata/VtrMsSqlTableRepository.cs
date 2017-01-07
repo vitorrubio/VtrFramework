@@ -8,18 +8,42 @@ using VtrFramework.Infra;
 namespace VtrFramework.MetaData
 {
     /// <summary>
-    /// obtém do banco de dados do aplicativo listas de tabelas e campos
+    /// obtém do banco de dados listas de tabelas e campos
     /// </summary>
     public class VtrMsSqlTableRepository
     {
 
+        #region campos privados
+
+        IVtrSystemDatabase _dataBase;
+
+        #endregion
 
 
+        #region constructors
 
-        public virtual List<VtrTable> GetAll(IVtrConnectionStringProvider prov, bool isAuditLogTable = false)
+        public VtrMsSqlTableRepository(IVtrConnectionStringProvider prov)
+        {
+            if (prov == null)
+                throw new ArgumentNullException("IVtrConnectionStringProvider não pode ser null.");
+            _dataBase = new VtrSystemDatabase(prov);
+        }
+
+        public VtrMsSqlTableRepository(IVtrSystemDatabase db)
+        {
+            if (db == null)
+                throw new ArgumentNullException("IVtrSystemDatabase não pode ser null.");
+        }
+
+        #endregion
+
+
+        #region métodos públicos
+
+        public virtual List<VtrTable> GetAll(bool isAuditLogTable = false)
         {
             List<VtrTable> resultado = new List<VtrTable>();
-            VtrSystemDatabase db = new VtrSystemDatabase(prov);
+            
             string comando = string.Format(@"
 
                 SELECT 
@@ -32,7 +56,7 @@ namespace VtrFramework.MetaData
                 where
                     t.name <> 'sysdiagrams'
                     and {0} t.name like '{1}%' ", isAuditLogTable ? "" : " not ", VtrTable.LOG_TABLE_PREFIX);
-            var dados = db.Query( comando ); 
+            var dados = _dataBase.Query( comando ); 
 
 
             foreach (DataRow d in dados)
@@ -41,18 +65,17 @@ namespace VtrFramework.MetaData
                 tmp.DatabaseName = d["databaseName"].ToString();
                 tmp.Schema = d["schemaName"].ToString();
                 tmp.Nome = d["tableName"].ToString();
-                tmp.Campos.AddRange(this.GetByTable(prov, tmp.Nome));
+                tmp.Campos.AddRange(this.GetByTable(tmp));
                 resultado.Add(tmp);
             }
 
             return resultado;
         }
 
-        public virtual List<VtrField> GetByTable(IVtrConnectionStringProvider prov, string tableName)
+        public virtual List<VtrField> GetByTable(VtrTable table)
         {
             List<VtrField> resultado = new List<VtrField>();
-            VtrSystemDatabase db = new VtrSystemDatabase(prov);
-            var dados = db.Query(@"
+            var dados = _dataBase.Query(@"
 SELECT 
     db_name() databaseName,
 	sys.schemas.name schemaName,
@@ -94,10 +117,10 @@ FROM
 
 where
     sys.tables.name <> 'sysdiagrams' and
-	sys.tables.name =  @tableName", new VtrParameter("@tableName", tableName));
+	sys.tables.name =  @tableName", new VtrParameter("@tableName", table.Nome));
             foreach (DataRow d in dados)
             {
-                VtrField tmp = new VtrField();
+                VtrField tmp = new VtrField(table);
                 tmp.Nome = d["COLUMN_NAME"].ToString();
                 tmp.Tipo = d["DATA_TYPE"].ToString();
                 tmp.Nulavel = Convert.ToBoolean( d["IS_NULLABLE"] ?? false);
@@ -129,6 +152,8 @@ where
             return resultado;
         }
 
+
+        #endregion
 
     }
 }

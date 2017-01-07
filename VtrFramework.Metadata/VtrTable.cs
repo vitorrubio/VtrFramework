@@ -83,6 +83,99 @@ namespace VtrFramework.MetaData
         #endregion
 
 
+        #region metodos sobrecarregados padrão object
 
+
+        /// <summary>
+        /// Verifica se dois VtrTable são iguais através de um campo que os identifique, para poder fazer ordenações e distinct
+        /// </summary>
+        /// <param name="obj">objeto a ser comparado</param>
+        /// <returns>bool - True se forem iguais</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (object.ReferenceEquals(this, obj))
+                return true;
+
+            if (!(obj is VtrTable))
+                return false;
+
+            return this.ToString().Equals((obj as VtrTable).ToString());
+        }
+
+        /// <summary>
+        /// Verifica se dois VtrTable são iguais através de um campo que os identifique, para poder fazer ordenações e distinct
+        /// igual o objeto acima, mas tipado, por performance
+        /// </summary>
+        /// <param name="ent">Entity a ser comparada</param>
+        /// <returns>bool - True se forem iguais</returns>
+        public virtual bool Equals(VtrTable ent)
+        {
+            if (ent == null)
+                return false;
+
+            if (object.ReferenceEquals(this, ent))
+                return true;
+
+            return this.ToString().Equals(ent.ToString());
+        }
+
+
+        /// <summary>
+        /// pega o hashcode da ToString, que deve ser única por banco/schema/tabela
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return this.ToString().GetHashCode();
+        }
+
+
+        public override string ToString()
+        {
+            return string.Format("{0}.{1}.{2}", this.DatabaseName, this.Schema, this.Nome).ToLower(); 
+        }
+
+
+        #endregion
+
+
+        #region operator overloading
+
+        /// <summary>
+        /// usa o método Equals para verificar se dois objetos são iguais e sobrecarregar a ação do operador de igualdade
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>bool</returns>
+        public static bool operator ==(VtrTable x, VtrTable y)
+        {
+            if (((object)x == null) && ((object)y == null))
+            {
+                return true;
+            }
+
+            if (((object)x == null) || ((object)y == null))
+            {
+                return false;
+            }
+
+            return x.Equals(y);
+        }
+
+        /// <summary>
+        /// usa o método Equals para verificar se dois objetos são iguais e sobrecarregar a ação do operador de desigualdade
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public static bool operator !=(VtrTable x, VtrTable y)
+        {
+            return !(x == y);
+        }
+
+        #endregion
     }
 }

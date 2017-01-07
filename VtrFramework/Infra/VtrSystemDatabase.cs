@@ -16,7 +16,7 @@ namespace VtrFramework.Infra
     /// representa um banco de dados de um sistema, delega todos os possíveis comandos a uma classe criada por DatabaseRequestFactory 
     /// que implemente IDatabaseRequest
     /// </summary> 
-    public class VtrSystemDatabase : VtrBaseSystemDatabase, ISystemDatabase
+    public class VtrSystemDatabase : VtrBaseSystemDatabase, IVtrSystemDatabase
     {
 
         #region propriedades privadas

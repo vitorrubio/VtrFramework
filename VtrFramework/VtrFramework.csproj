@@ -58,11 +58,11 @@
     <Compile Include="Extensions\VtrStringExtensions.cs" />
     <Compile Include="Infra\VtrBaseSystemDatabase.cs" />
     <Compile Include="Infra\VtrAppConfigConnectionStringProvider.cs" />
-    <Compile Include="Infra\VtrConnectionStringProviderDeTestes.cs" />
+    <Compile Include="Infra\VtrTestConnectionStringProvider.cs" />
     <Compile Include="Infra\VtrDatabaseRequestFactory.cs" />
     <Compile Include="Infra\IVtrConnectionStringProvider.cs" />
     <Compile Include="Infra\IVtrDatabaseRequest.cs" />
-    <Compile Include="Infra\ISystemDatabase.cs" />
+    <Compile Include="Infra\IVtrSystemDatabase.cs" />
     <Compile Include="Infra\VtrMsSqlDatabaseRequest.cs" />
     <Compile Include="Infra\VtrParameter.cs" />
     <Compile Include="Infra\VtrSystemDatabase.cs" />

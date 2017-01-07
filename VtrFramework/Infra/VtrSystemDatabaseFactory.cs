@@ -16,11 +16,11 @@ namespace VtrFramework.Infra
         /// Cria uma instância de SystemDatabase de acordo com as configurações
         /// </summary>
         /// <returns></returns>
-        public static ISystemDatabase GetSystemDatabase()
+        public static IVtrSystemDatabase GetSystemDatabase()
         {
             IVtrConnectionStringProvider connStrProv = 
                 VtrContext.IsInTest() ? 
-                new VtrConnectionStringProviderDeTestes() as IVtrConnectionStringProvider : 
+                new VtrTestConnectionStringProvider() as IVtrConnectionStringProvider : 
                 new VtrAppConfigConnectionStringProvider() as IVtrConnectionStringProvider;
 
             return new VtrSystemDatabase(connStrProv);

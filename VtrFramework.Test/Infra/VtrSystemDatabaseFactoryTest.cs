@@ -14,7 +14,7 @@ namespace VtrFramework.Test.Infra
         public void GetSystemDatabaseTest()
         {
             var sysdt = VtrSystemDatabaseFactory.GetSystemDatabase();
-            Assert.IsInstanceOf<ISystemDatabase>(sysdt);
+            Assert.IsInstanceOf<IVtrSystemDatabase>(sysdt);
         }
     }
 }

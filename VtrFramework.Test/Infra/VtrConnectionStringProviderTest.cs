@@ -15,7 +15,7 @@ namespace VtrFramework.Test.Infra
         [Description("Verifica se está trazendo a connection string do ambiente de teste")]
         public void GetConnectionStringTest()
         {
-            VtrConnectionStringProviderDeTestes prov = new VtrConnectionStringProviderDeTestes();
+            VtrTestConnectionStringProvider prov = new VtrTestConnectionStringProvider();
             Assert.AreEqual(@"Data Source=.\SQLEXPRESS;Initial Catalog=VtrTemplate;Persist Security Info=True;User ID=vitor;Password=vitor", prov.GetConnectionString());
         }
     }
