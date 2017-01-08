@@ -87,7 +87,7 @@ namespace VtrFramework.CodeGenerator
         /// </summary>
         public virtual void ExportarProjeto()
         {
-            IVtrTableRepository rep = VtrMetaDataFactory.GetTableRepository();
+            IVtrTableRepository rep = VtrMetaDataFactory.GetTableRepository(_db);
             var tabelas = rep.GetAll();
             ExportarProjeto(tabelas);
 

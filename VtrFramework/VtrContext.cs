@@ -69,6 +69,16 @@ namespace VtrFramework
             return new VtrSystemDatabase(new VtrAppConfigConnectionStringProvider());
         }
 
+        /// <summary>
+        /// esse método traz um IVtrSystemDatabase conectado à connectionString do IVtrConnectionStringProvider que eu passar para ele
+        /// É ideal para se conectar a um outro banco de dados onde a connectionString será imputada pelo usuário ou virá de um outro banco
+        /// </summary>
+        /// <param name="prov"></param>
+        /// <returns></returns>
+        public static IVtrSystemDatabase GetDB(IVtrConnectionStringProvider prov)
+        {
+            return new VtrSystemDatabase(prov);
+        }
 
         public static void Log(string verb, object obj)
         {
