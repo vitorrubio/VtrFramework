@@ -28,10 +28,10 @@ namespace VtrTemplate.Data.Repository
 		{
 			UmaTabelaQualquer result = null;
 			string sql = "select * from UmaTabelaQualquer (nolock)  where Id = @Id "; 
-			var dados = _db.Query(sql, new VtrParameter("@Id", id));
+			var dados = _db.Query<UmaTabelaQualquer>(sql, new VtrParameter("@Id", id));
 			if((dados!=null)&&(dados.Count() > 0))
 			{
-				result = DataRowsToEntity(dados).FirstOrDefault();
+				result = dados.FirstOrDefault();
 			}
 			return result;
 		}
@@ -41,10 +41,10 @@ namespace VtrTemplate.Data.Repository
 		{
 			List<UmaTabelaQualquer> result = new List<UmaTabelaQualquer>();
 			string sql = "select * from UmaTabelaQualquer (nolock)   "; 
-			var dados = _db.Query(sql);
+			var dados = _db.Query<UmaTabelaQualquer>(sql);
 			if((dados!=null)&&(dados.Count() > 0))
 			{
-				result.AddRange( DataRowsToEntity(dados));
+				result.AddRange( dados);
 			}
 			return result;
 		}
@@ -54,10 +54,10 @@ namespace VtrTemplate.Data.Repository
 		{
 			List<UmaTabelaQualquer> result = new List<UmaTabelaQualquer>();
 			string sql = "select * from UmaTabelaQualquer (nolock)  where Nome like '%' + @Nome + '%' "; 
-			var dados = _db.Query(sql, new VtrParameter("@Nome", aNome));
+			var dados = _db.Query<UmaTabelaQualquer>(sql, new VtrParameter("@Nome", aNome));
 			if((dados!=null)&&(dados.Count() > 0))
 			{
-				result.AddRange( DataRowsToEntity(dados));
+				result.AddRange( dados);
 			}
 			return result;
 		}
@@ -67,10 +67,10 @@ namespace VtrTemplate.Data.Repository
 		{
 			List<UmaTabelaQualquer> result = new List<UmaTabelaQualquer>();
 			string sql = "select * from UmaTabelaQualquer (nolock)  where Observacao like '%' + @Observacao + '%' "; 
-			var dados = _db.Query(sql, new VtrParameter("@Observacao", aObservacao));
+			var dados = _db.Query<UmaTabelaQualquer>(sql, new VtrParameter("@Observacao", aObservacao));
 			if((dados!=null)&&(dados.Count() > 0))
 			{
-				result.AddRange( DataRowsToEntity(dados));
+				result.AddRange( dados);
 			}
 			return result;
 		}
@@ -80,10 +80,10 @@ namespace VtrTemplate.Data.Repository
 		{
 			List<UmaTabelaQualquer> result = new List<UmaTabelaQualquer>();
 			string sql = "select * from UmaTabelaQualquer (nolock)  where DataRevisao between @DtIni and @DtFin "; 
-			var dados = _db.Query(sql, new VtrParameter("@DtIni", dtIni), new VtrParameter("@DtFin", dtFin));
+			var dados = _db.Query<UmaTabelaQualquer>(sql, new VtrParameter("@DtIni", dtIni), new VtrParameter("@DtFin", dtFin));
 			if((dados!=null)&&(dados.Count() > 0))
 			{
-				result.AddRange( DataRowsToEntity(dados));
+				result.AddRange( dados);
 			}
 			return result;
 		}
@@ -93,10 +93,10 @@ namespace VtrTemplate.Data.Repository
 		{
 			List<UmaTabelaQualquer> result = new List<UmaTabelaQualquer>();
 			string sql = "select * from UmaTabelaQualquer (nolock)  where DataEvento between @DtIni and @DtFin "; 
-			var dados = _db.Query(sql, new VtrParameter("@DtIni", dtIni), new VtrParameter("@DtFin", dtFin));
+			var dados = _db.Query<UmaTabelaQualquer>(sql, new VtrParameter("@DtIni", dtIni), new VtrParameter("@DtFin", dtFin));
 			if((dados!=null)&&(dados.Count() > 0))
 			{
-				result.AddRange( DataRowsToEntity(dados));
+				result.AddRange( dados);
 			}
 			return result;
 		}
@@ -106,10 +106,10 @@ namespace VtrTemplate.Data.Repository
 		{
 			List<UmaTabelaQualquer> result = new List<UmaTabelaQualquer>();
 			string sql = "select * from UmaTabelaQualquer (nolock)  where DataUltimaAlteracao between @DtIni and @DtFin "; 
-			var dados = _db.Query(sql, new VtrParameter("@DtIni", dtIni), new VtrParameter("@DtFin", dtFin));
+			var dados = _db.Query<UmaTabelaQualquer>(sql, new VtrParameter("@DtIni", dtIni), new VtrParameter("@DtFin", dtFin));
 			if((dados!=null)&&(dados.Count() > 0))
 			{
-				result.AddRange( DataRowsToEntity(dados));
+				result.AddRange( dados);
 			}
 			return result;
 		}
@@ -181,32 +181,6 @@ namespace VtrTemplate.Data.Repository
 
 		#region metodos privados
 
-		private List<UmaTabelaQualquer> DataRowsToEntity(IEnumerable<DataRow> dados)
-		{
-			var consulta = from d in dados 
-			select new UmaTabelaQualquer() 
-				{
-					Id = VtrConvert.ToInteger(d["Id"]), 
-					Nome = d["Nome"].ToString(), 
-					Valor = VtrConvert.ToNullableDouble(d["Valor"]), 
-					ValorFloat = VtrConvert.ToNullableDouble(d["ValorFloat"]), 
-					ValorDecimal = VtrConvert.ToNullableDouble(d["ValorDecimal"]), 
-					ValorNumerico = VtrConvert.ToNullableDouble(d["ValorNumerico"]), 
-					ValorReal = VtrConvert.ToNullableDouble(d["ValorReal"]), 
-					ValorDouble = VtrConvert.ToNullableDouble(d["ValorDouble"]), 
-					ValorInt = VtrConvert.ToNullableInteger(d["ValorInt"]), 
-					ValorTinyInt = VtrConvert.ToNullableInteger(d["ValorTinyInt"]), 
-					ValorBigInt = VtrConvert.ToNullableInt64(d["ValorBigInt"]), 
-					ValorGuid = d["ValorGuid"].IsNull()? new Nullable<Guid>(  ) : (Guid) d["ValorGuid"], 
-					Observacao = d["Observacao"].ToString(), 
-					Arquivo = (Byte[]) d["Arquivo"], 
-					DataRevisao = VtrConvert.ToNullableDateTime(d["DataRevisao"]), 
-					DataEvento = VtrConvert.ToNullableDateTime(d["DataEvento"]), 
-					LoginUsuarioUltimaAlteracao = d["LoginUsuarioUltimaAlteracao"].ToString(), 
-					DataUltimaAlteracao = VtrConvert.ToDateTime(d["DataUltimaAlteracao"]) 
-				};
-			return consulta.ToList();
-		}
 
 
 		#endregion

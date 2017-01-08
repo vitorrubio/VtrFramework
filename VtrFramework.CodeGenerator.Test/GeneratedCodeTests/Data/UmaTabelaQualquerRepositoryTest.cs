@@ -17,9 +17,6 @@ namespace VtrFramework.CodeGenerator.Test.GeneratedCodeTests.Data
         {
             UmaTabelaQualquer reg = new UmaTabelaQualquer();
             reg.Nome = "teste";
-            reg.Arquivo = new byte[1] { 0 };
-            reg.ValorGuid = Guid.NewGuid();
-            
 
             UmaTabelaQualquerRepository rep = new UmaTabelaQualquerRepository();
             rep.Save(reg);
@@ -48,6 +45,7 @@ namespace VtrFramework.CodeGenerator.Test.GeneratedCodeTests.Data
             rep.Save(reg);
 
             Assert.Greater(reg.Id, 0);
+            rep.Delete(reg);
 
             int id = reg.Id;
             reg = null;

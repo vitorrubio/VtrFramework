@@ -47,8 +47,10 @@
     <Compile Include="GeneratedCodeTests\Data\UmaTabelaQualquerRepositoryTest.cs" />
     <Compile Include="GeneratedCode\Data\Repository\UmaTabelaFilhaRepository.Automatico.cs" />
     <Compile Include="GeneratedCode\Data\Repository\UmaTabelaQualquerRepository.Automatico.cs" />
+    <Compile Include="GeneratedCode\Data\Repository\UmaTabelaTesteRepository.Automatico.cs" />
     <Compile Include="GeneratedCode\Domain\DomainModel\UmaTabelaFilha.Automatico.cs" />
     <Compile Include="GeneratedCode\Domain\DomainModel\UmaTabelaQualquer.Automatico.cs" />
+    <Compile Include="GeneratedCode\Domain\DomainModel\UmaTabelaTeste.Automatico.cs" />
     <Compile Include="VtrCodeGenerationWorkTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -24,7 +24,12 @@ namespace dllBBI.Test.Genesis.MetaData
             VtrCodeGenerationWork exp = new VtrCodeGenerationWork(VtrContext.GetDB(), nameSpace, caminho);
 
             exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrAutoProperitesClassGenerator>());
-            exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrRepositoryGenerator>());
+
+            //gerador de repositórios com método DataRowsToEntity
+            //exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrRepositoryGenerator>());
+
+            //gerador de repositórios usando Query<> genérico
+            exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrRepositoryGeneratorWithGenericQuery>());
 
             //exp.GeneratorFactories.Add(new ExportadorFactory<ExportadorWidgetsDePopUpModal>());
             //exp.GeneratorFactories.Add(new ExportadorFactory<ExportadorWidgetsDeMioloDeFormulario>());
@@ -37,7 +42,7 @@ namespace dllBBI.Test.Genesis.MetaData
             //exp.GeneratorFactories.Add(new ExportadorFactory<ExportadorTriggerUpdate>());
             //exp.GeneratorFactories.Add(new ExportadorFactory<ExportadorTriggerInsteadOfDelete>());
             //exp.GeneratorFactories.Add(new ExportadorFactory<ExportadorTriggerDelete>());
-            
+
 
             exp.ExportarProjeto();
 

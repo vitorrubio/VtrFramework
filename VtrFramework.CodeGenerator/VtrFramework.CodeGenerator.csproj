@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="VtrAutoProperitesClassGenerator.cs" />
     <Compile Include="VtrGeneratorFactory.cs" />
+    <Compile Include="VtrRepositoryGeneratorWithGenericQuery.cs" />
     <Compile Include="VtrRepositoryGenerator.cs" />
     <Compile Include="IVtrGenerator.cs" />
     <Compile Include="IVtrGeneratorFactory.cs" />

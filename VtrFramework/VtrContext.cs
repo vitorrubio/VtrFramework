@@ -78,7 +78,7 @@ namespace VtrFramework
 
         public static string GetCurrentLogin()
         {
-            return System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            return System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\')[1];
         }
 
         #endregion
