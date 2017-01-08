@@ -10,16 +10,6 @@ namespace VtrFramework.MetaData
 {
     public class VtrMetaDataFactory
     {
-        //public virtual IVtrFieldTypeInfo GetFieldTypeInfo(VtrField field)
-        //{
-
-        //}
-
-
-        public static IVtrTableRepository GetTableRepository()
-        {
-            return new VtrMsSqlTableRepository( VtrContext.GetDB() );
-        }
 
         public static IVtrTableRepository GetTableRepository(IVtrSystemDatabase db)
         {
