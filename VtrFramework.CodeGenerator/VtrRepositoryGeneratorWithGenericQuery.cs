@@ -428,6 +428,8 @@ namespace {1}
             sb.Append("\t\t\tif(registro == null)\r\n\t\t\t\treturn;\r\n");
 
             sb.Append(string.Format("\t\t\tregistro = this.GetById(registro.Id);\r\n"));
+            //salvamos antes de deletar para ter o log de auditoria (gerado por triggers) de quem excluiu
+            sb.Append(string.Format("\t\t\t//salvamos antes de deletar para ter o log de auditoria (gerado por triggers) de quem excluiu\r\n"));
             sb.Append(string.Format("\t\t\tthis.Save(registro);\r\n"));
             sb.Append(string.Format("\t\t\tVtrContext.Log(\"Excluiu \", registro);\r\n"));
             sb.Append(string.Format("\t\t\t_db.Query(\"{0}\", new VtrParameter(\"@Id\", registro.Id));\r\n", this.GetDeleteSql()));
