@@ -19,6 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.CodeGenerator"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VtrFramework.CodeGenerator.Test", "VtrFramework.CodeGenerator.Test\VtrFramework.CodeGenerator.Test.csproj", "{F7917584-7CDD-4476-8286-5FE68E64E3F9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "license", "license", "{E98FB9D7-CDA0-415B-BE4C-BF728E17848C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Desktop\lgpl.txt = ..\..\Desktop\lgpl.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -94,6 +94,7 @@ namespace VtrTemplate.Data.Repository
 			if(registro == null)
 				return;
 			registro = this.GetById(registro.Id);
+			//salvamos antes de deletar para ter o log de auditoria (gerado por triggers) de quem excluiu
 			this.Save(registro);
 			VtrContext.Log("Excluiu ", registro);
 			_db.Query("delete from UmaTabelaFilha where Id = @Id", new VtrParameter("@Id", registro.Id));
