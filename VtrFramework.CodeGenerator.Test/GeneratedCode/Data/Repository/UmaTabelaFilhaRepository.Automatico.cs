@@ -12,7 +12,7 @@ using VtrFramework.Data;
 namespace VtrTemplate.Data.Repository
 {
 	//USAR  CTRL+K+D para identar o código 
-	public partial class UmaTabelaFilhaRepository:IRepository<UmaTabelaFilha>
+	public partial class UmaTabelaFilhaRepository: IVtrRepository<UmaTabelaFilha>
 	{
 		#region campos privados
 

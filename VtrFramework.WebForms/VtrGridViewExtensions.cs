@@ -10,7 +10,7 @@ namespace VtrFramework.WebForms.Extensions
     /// <summary>
     /// Extensões para facilitar o uso da gridview
     /// </summary>
-    public static class GridViewExtensions
+    public static class VtrGridViewExtensions
     {
         /// <summary>
         /// o método registrar configura o GridView com AccessibleHeader e TableHeader para ser gerado o html referente ao thead.

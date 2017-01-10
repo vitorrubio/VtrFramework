@@ -258,7 +258,7 @@ namespace {1}
             StringBuilder sb = new StringBuilder();
 
             sb.Append("\t//USAR  CTRL+K+D para identar o código \r\n");
-            sb.Append(string.Format("\tpublic partial class {0}Repository:IRepository<{0}>\r\n", this.Tabela.Nome));
+            sb.Append(string.Format("\tpublic partial class {0}Repository:IVtrRepository<{0}>\r\n", this.Tabela.Nome));
             sb.Append("\t{\r\n");
 
             BuldPrivateFields(sb);

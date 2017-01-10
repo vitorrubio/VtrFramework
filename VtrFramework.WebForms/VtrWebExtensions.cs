@@ -23,7 +23,7 @@ namespace VtrFramework.WebForms.Extensions
     /// <summary>
     /// Extensões de classes web
     /// </summary>
-    public static class WebExtensions
+    public static class VtrWebExtensions
     {
 
         #region constantes privadas

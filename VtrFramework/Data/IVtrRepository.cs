@@ -9,7 +9,7 @@ namespace VtrFramework.Data
     /// <summary>
     /// Interfce de repositório genérico
     /// </summary>
-    public interface IRepository<T> where T : VtrEntity
+    public interface IVtrRepository<T> where T : VtrEntity
     {
         T GetById(int id);
         List<T> GetAll();

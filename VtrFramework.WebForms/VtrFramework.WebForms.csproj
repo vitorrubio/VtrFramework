@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GridViewExtensions.cs" />
+    <Compile Include="VtrGridViewExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebExtensions.cs" />
+    <Compile Include="VtrWebExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VtrFramework\VtrFramework.csproj">
