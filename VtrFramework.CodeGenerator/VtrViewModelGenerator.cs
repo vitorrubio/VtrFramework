@@ -179,7 +179,7 @@ namespace {0}
             sb.Append("\t{\r\n");
 
             sb.Append(string.Format("\t\t#region propriedades publicas \r\n\r\n"));
-            foreach (var c in this.Tabela.Campos.Where(x => x.Nome.ToUpper() != "ID"))
+            foreach (var c in this.Tabela.Campos)
             {
                 
                 sb.Append(string.Format("\t\t/// <summary>\r\n"));
