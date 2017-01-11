@@ -13,6 +13,11 @@ namespace VtrFramework.CodeGenerator
     public class VtrViewModelGenerator : IVtrGenerator, IVtrViewModelGenerator
     {
 
+        #region constantes
+
+        const string VIEWMODEL_SUFFIX = "ViewModel";
+
+        #endregion
 
         #region campos privados
 
@@ -84,7 +89,7 @@ namespace VtrFramework.CodeGenerator
         /// <returns></returns>
         public virtual string GetNameSpace()
         {
-            string esteNamespace = "ViewModel";
+            string esteNamespace = "Models";
             if (!string.IsNullOrWhiteSpace(this.NameSpaceBase))
             {
                 return (this.NameSpaceBase + "." + esteNamespace).Replace("..", ".");
@@ -101,12 +106,12 @@ namespace VtrFramework.CodeGenerator
         /// <returns></returns>
         public virtual string GetCaminho()
         {
-            string dir = Path.GetDirectoryName((this.CaminhoBase + "\\Model\\").Replace("\\\\", "\\"));
+            string dir = Path.GetDirectoryName((this.CaminhoBase + "\\Models\\").Replace("\\\\", "\\"));
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
             }
-            return (dir + "\\" + this.Tabela.Nome + ".Automatico.cs");
+            return (dir + "\\" + this.Tabela.Nome + VIEWMODEL_SUFFIX  + ".Automatico.cs");
         }
 
 
@@ -168,7 +173,7 @@ namespace {0}
             sb.Append("\t// USAR  CTRL+K+D para identar o código \r\n");
 
             sb.Append(string.Format("\t/// <summary>\r\n"));
-            sb.Append(string.Format("\t/// tabela {0}\r\n", this.Tabela.Nome));
+            sb.Append(string.Format("\t/// tabela {0}\r\n", this.Tabela.Nome + VIEWMODEL_SUFFIX));
             sb.Append(string.Format("\t/// <summary>\r\n"));
             sb.Append(string.Format("\tpublic partial class {0} \r\n", this.Tabela.Nome));            
             sb.Append("\t{\r\n");
