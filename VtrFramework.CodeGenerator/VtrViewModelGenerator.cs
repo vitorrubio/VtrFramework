@@ -173,9 +173,9 @@ namespace {0}
             sb.Append("\t// USAR  CTRL+K+D para identar o código \r\n");
 
             sb.Append(string.Format("\t/// <summary>\r\n"));
-            sb.Append(string.Format("\t/// tabela {0}\r\n", this.Tabela.Nome + VIEWMODEL_SUFFIX));
+            sb.Append(string.Format("\t/// tabela {0}\r\n", this.Tabela.Nome));
             sb.Append(string.Format("\t/// <summary>\r\n"));
-            sb.Append(string.Format("\tpublic partial class {0} \r\n", this.Tabela.Nome));            
+            sb.Append(string.Format("\tpublic partial class {0} \r\n", this.Tabela.Nome + VIEWMODEL_SUFFIX));            
             sb.Append("\t{\r\n");
 
             sb.Append(string.Format("\t\t#region propriedades publicas \r\n\r\n"));
