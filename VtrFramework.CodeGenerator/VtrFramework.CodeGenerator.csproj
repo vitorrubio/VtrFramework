@@ -40,6 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IVtrControllerGenerator.cs" />
+    <Compile Include="IVtrViewGenerator.cs" />
+    <Compile Include="IVtrViewModelGenerator.cs" />
+    <Compile Include="IVtrRepositoryGenerator.cs" />
+    <Compile Include="IVtrDomainModelGenerator.cs" />
+    <Compile Include="VtrViewModelGenerator.cs" />
     <Compile Include="VtrAutoProperitesClassGenerator.cs" />
     <Compile Include="VtrGeneratorFactory.cs" />
     <Compile Include="VtrRepositoryGeneratorWithGenericQuery.cs" />

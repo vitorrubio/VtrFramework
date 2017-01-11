@@ -10,7 +10,7 @@ namespace VtrFramework.CodeGenerator
     /// <summary>
     /// 
     /// </summary>
-    public class VtrAutoProperitesClassGenerator : IVtrGenerator, IVtrDomainModelGenerator
+    public class VtrViewModelGenerator : IVtrGenerator, IVtrViewModelGenerator
     {
 
 
@@ -51,7 +51,7 @@ namespace VtrFramework.CodeGenerator
         /// <param name="tab">Tabela que está sendo usada para gerar o arquivo</param>
         /// <param name="ns">NameSpace padrão da aplicação</param>
         /// <param name="p">Path onde serão salvos os arquivos</param>
-        public VtrAutoProperitesClassGenerator(VtrTable table, string baseNamespace, string basePath)
+        public VtrViewModelGenerator(VtrTable table, string baseNamespace, string basePath)
         {
             if (table == null)
                 throw new ArgumentNullException("A tabela não pode ser nula!");
@@ -84,7 +84,7 @@ namespace VtrFramework.CodeGenerator
         /// <returns></returns>
         public virtual string GetNameSpace()
         {
-            string esteNamespace = "Domain.DomainModel";
+            string esteNamespace = "ViewModel";
             if (!string.IsNullOrWhiteSpace(this.NameSpaceBase))
             {
                 return (this.NameSpaceBase + "." + esteNamespace).Replace("..", ".");
@@ -101,7 +101,7 @@ namespace VtrFramework.CodeGenerator
         /// <returns></returns>
         public virtual string GetCaminho()
         {
-            string dir = Path.GetDirectoryName((this.CaminhoBase + "\\Domain\\DomainModel\\").Replace("\\\\", "\\"));
+            string dir = Path.GetDirectoryName((this.CaminhoBase + "\\Model\\").Replace("\\\\", "\\"));
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -170,7 +170,7 @@ namespace {0}
             sb.Append(string.Format("\t/// <summary>\r\n"));
             sb.Append(string.Format("\t/// tabela {0}\r\n", this.Tabela.Nome));
             sb.Append(string.Format("\t/// <summary>\r\n"));
-            sb.Append(string.Format("\tpublic partial class {0} : VtrEntity\r\n", this.Tabela.Nome));            
+            sb.Append(string.Format("\tpublic partial class {0} \r\n", this.Tabela.Nome));            
             sb.Append("\t{\r\n");
 
             sb.Append(string.Format("\t\t#region propriedades publicas \r\n\r\n"));

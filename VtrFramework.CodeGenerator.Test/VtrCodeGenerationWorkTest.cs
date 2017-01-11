@@ -67,6 +67,8 @@ namespace dllBBI.Test.Genesis.MetaData
 
             exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrAutoProperitesClassGenerator>());
 
+            exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrViewModelGenerator>());
+
             //gerador de repositórios com método DataRowsToEntity
             //exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrRepositoryGenerator>());
 

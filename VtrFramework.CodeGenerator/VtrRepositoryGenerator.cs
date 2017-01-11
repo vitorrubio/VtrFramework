@@ -10,7 +10,7 @@ namespace VtrFramework.CodeGenerator
     /// <summary>
     /// 
     /// </summary>
-    public class VtrRepositoryGenerator : IVtrGenerator
+    public class VtrRepositoryGenerator : IVtrGenerator, IVtrRepositoryGenerator
     {
 
 
