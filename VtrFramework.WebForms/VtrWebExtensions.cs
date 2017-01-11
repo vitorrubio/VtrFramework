@@ -12,7 +12,7 @@ namespace VtrFramework.WebForms.Extensions
     /// <summary>
     /// Enum que define como os nós de um ddl hierárquico serão exibidos
     /// </summary>
-    public enum FormatacaoDeArvore
+    public enum VtrFormatacaoDeArvore
     {
         PermitirNosComFilhos,
         SugerirApenasFolhas,
@@ -50,7 +50,7 @@ namespace VtrFramework.WebForms.Extensions
         /// <param name="lista">HierarchicalList - lisa hierárquica a ser exibida em um combo</param>
         /// <param name="useValorpath">bool - define se deve ser criado um hint/tooltip com o caminho completo do item</param>
         /// <param name="formato">define se é permitido ou não nodes com filhos, e se eles são selecionáveis ou não</param>
-        public static void HierarchicalDataBind(this DropDownList ddl, VtrHierarchicalList lista, bool useValorpath = false, FormatacaoDeArvore formato = FormatacaoDeArvore.PermitirNosComFilhos)
+        public static void HierarchicalDataBind(this DropDownList ddl, VtrHierarchicalList lista, bool useValorpath = false, VtrFormatacaoDeArvore formato = VtrFormatacaoDeArvore.PermitirNosComFilhos)
         {
             _scanTrees(ddl, _getRoots(lista), useValorpath, formato, 0, true);
         }
@@ -62,7 +62,7 @@ namespace VtrFramework.WebForms.Extensions
         /// <param name="lista">HierarchicalList - lisa hierárquica a ser exibida em um combo</param>
         /// <param name="useValorpath">bool - define se deve ser criado um hint/tooltip com o caminho completo do item</param>
         /// <param name="formato">define se é permitido ou não nodes com filhos, e se eles são selecionáveis ou não</param>
-        public static void HierarchicalDataBind(this ListBox ddl, VtrHierarchicalList lista, bool useValorpath = false, FormatacaoDeArvore formato = FormatacaoDeArvore.PermitirNosComFilhos)
+        public static void HierarchicalDataBind(this ListBox ddl, VtrHierarchicalList lista, bool useValorpath = false, VtrFormatacaoDeArvore formato = VtrFormatacaoDeArvore.PermitirNosComFilhos)
         {
             _scanTrees(ddl, _getRoots(lista), useValorpath, formato, 0, true);
         }
@@ -110,7 +110,7 @@ namespace VtrFramework.WebForms.Extensions
         {
             try
             {
-                System.Web.HttpContext.Current.Session.Add(WebExtensions.GetChaveUrlPreLogin(), System.Web.HttpContext.Current.Request.RawUrl);
+                System.Web.HttpContext.Current.Session.Add(VtrWebExtensions.GetChaveUrlPreLogin(), System.Web.HttpContext.Current.Request.RawUrl);
             }
             catch
             {
@@ -131,7 +131,7 @@ namespace VtrFramework.WebForms.Extensions
         /// <param name="response">HttpResponse</param>
         public static void RedirecionarPosLogin(this HttpResponse response)
         {
-            var url = System.Web.HttpContext.Current.Session[WebExtensions.GetChaveUrlPreLogin()];
+            var url = System.Web.HttpContext.Current.Session[VtrWebExtensions.GetChaveUrlPreLogin()];
             if ((url != null) && (!string.IsNullOrWhiteSpace(url.ToString())))
             {
                 if (!url.ToString().ToLower().Contains("/login.aspx"))
@@ -421,7 +421,7 @@ namespace VtrFramework.WebForms.Extensions
         /// <param name="formato">FormatacaoDeArvore - define se permite ou não seleção de itens com nodes filhos</param>
         /// <param name="nivel">int - nivel corrente na hierarquia</param>
         /// <param name="primeiroVazio">bool - define se o primeiro item é vazio ou não. É passado true somente na primeira iteração recursiva.</param>
-        private static void _scanTrees(this DropDownList ddl, VtrHierarchicalList lista, bool useValorpath, FormatacaoDeArvore formato, int nivel = 0, bool primeiroVazio = true)
+        private static void _scanTrees(this DropDownList ddl, VtrHierarchicalList lista, bool useValorpath, VtrFormatacaoDeArvore formato, int nivel = 0, bool primeiroVazio = true)
         {
             if (primeiroVazio && (nivel == 0))
             {
@@ -446,10 +446,10 @@ namespace VtrFramework.WebForms.Extensions
                 {
                     switch (formato)
                     {
-                        case FormatacaoDeArvore.SugerirApenasFolhas:
+                        case VtrFormatacaoDeArvore.SugerirApenasFolhas:
                             item.Attributes.Add("class", "OptionNivel" + nivel.ToString("0") + " disabled");
                             break;
-                        case FormatacaoDeArvore.PermitirApenasFolhas:
+                        case VtrFormatacaoDeArvore.PermitirApenasFolhas:
                             item.Attributes.Add("class", "OptionNivel" + nivel.ToString("0") + " disabled");
                             item.Attributes["disabled"] = "disabled";
                             break;
@@ -487,7 +487,7 @@ namespace VtrFramework.WebForms.Extensions
         /// <param name="formato">FormatacaoDeArvore - define se permite ou não seleção de itens com nodes filhos</param>
         /// <param name="nivel">int - nivel corrente na hierarquia</param>
         /// <param name="primeiroVazio">bool - define se o primeiro item é vazio ou não. É passado true somente na primeira iteração recursiva.</param>
-        private static void _scanTrees(this ListBox ddl, VtrHierarchicalList lista, bool useValorpath, FormatacaoDeArvore formato, int nivel = 0, bool primeiroVazio = true)
+        private static void _scanTrees(this ListBox ddl, VtrHierarchicalList lista, bool useValorpath, VtrFormatacaoDeArvore formato, int nivel = 0, bool primeiroVazio = true)
         {
             if (primeiroVazio && (nivel == 0))
             {
@@ -512,10 +512,10 @@ namespace VtrFramework.WebForms.Extensions
                 {
                     switch (formato)
                     {
-                        case FormatacaoDeArvore.SugerirApenasFolhas:
+                        case VtrFormatacaoDeArvore.SugerirApenasFolhas:
                             item.Attributes.Add("class", "OptionNivel" + nivel.ToString("0") + " disabled");
                             break;
-                        case FormatacaoDeArvore.PermitirApenasFolhas:
+                        case VtrFormatacaoDeArvore.PermitirApenasFolhas:
                             item.Attributes.Add("class", "OptionNivel" + nivel.ToString("0") + " disabled");
                             item.Attributes["disabled"] = "disabled";
                             break;
