@@ -16,7 +16,7 @@ namespace VtrFramework.Test.Infra
             string query = "select db_name()";
 
 
-            var sdDev = new VtrSystemDatabase(new VtrTestConnectionStringProvider() );
+            var sdDev = new VtrSystemDatabase(new VtrAppConfigConnectionStringProvider() );
             Assert.AreEqual("vtrtemplate", sdDev.Query(query)[0][0].ToString().ToLower()); 
 
         }

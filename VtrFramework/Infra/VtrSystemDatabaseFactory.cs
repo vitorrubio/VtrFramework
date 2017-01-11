@@ -19,8 +19,6 @@ namespace VtrFramework.Infra
         public static IVtrSystemDatabase GetSystemDatabase()
         {
             IVtrConnectionStringProvider connStrProv = 
-                VtrContext.IsInTest() ? 
-                new VtrTestConnectionStringProvider() as IVtrConnectionStringProvider : 
                 new VtrAppConfigConnectionStringProvider() as IVtrConnectionStringProvider;
 
             return new VtrSystemDatabase(connStrProv);

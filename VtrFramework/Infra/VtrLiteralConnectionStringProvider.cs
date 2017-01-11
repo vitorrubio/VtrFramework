@@ -18,5 +18,12 @@ namespace VtrFramework.Infra
         {
             return _connectionString;
         }
+
+        public virtual string GetConnectionString(string nome)
+        {
+            System.Diagnostics.Debug.WriteLine("Parametro nome ignorado nesta classe");
+            System.Diagnostics.Trace.WriteLine("Parametro nome ignorado nesta classe");
+            return _connectionString;
+        }
     }
 }

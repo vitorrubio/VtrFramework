@@ -15,7 +15,7 @@ namespace VtrFramework.MetaData.Test
         [Test]
         public void CreateTest()
         {
-            VtrTestConnectionStringProvider prov = new VtrTestConnectionStringProvider();
+            VtrAppConfigConnectionStringProvider prov = new VtrAppConfigConnectionStringProvider();
             VtrSystemDatabase db = new VtrSystemDatabase( prov );
 
             VtrMsSqlTableRepository obj1 = new VtrMsSqlTableRepository(db);
@@ -29,7 +29,7 @@ namespace VtrFramework.MetaData.Test
         [Test]
         public void GetAllTest()
         {
-            VtrMsSqlTableRepository rep = new VtrMsSqlTableRepository(new VtrTestConnectionStringProvider());
+            VtrMsSqlTableRepository rep = new VtrMsSqlTableRepository(new VtrAppConfigConnectionStringProvider());
             var tabelas = rep.GetAll();
 
             Assert.Greater(tabelas.Count, 0);

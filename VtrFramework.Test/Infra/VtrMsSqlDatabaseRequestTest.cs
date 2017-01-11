@@ -14,7 +14,7 @@ namespace VtrFramework.Test.Infra
         [Test]
         public void CreateTest()
         {
-            var prov = new VtrTestConnectionStringProvider();
+            var prov = new VtrAppConfigConnectionStringProvider();
             var req = new VtrMsSqlDatabaseRequest(prov);
         }
 
@@ -22,7 +22,7 @@ namespace VtrFramework.Test.Infra
         [Test]
         public void QueryTest()
         {
-            var prov = new VtrTestConnectionStringProvider();
+            var prov = new VtrAppConfigConnectionStringProvider();
             var req = new VtrMsSqlDatabaseRequest(prov);
             var dados = req.Query("select @@VERSION");
             Console.WriteLine(dados[0][0]);
