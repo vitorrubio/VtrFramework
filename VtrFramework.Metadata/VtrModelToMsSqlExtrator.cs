@@ -70,16 +70,24 @@ namespace VtrFramework.MetaData
                     {
                         string tipo = VtrTypeServices.DotNetTypeToMsSqlType(p.PropertyType);
 
-                        //se o tipo não foi identificado
-                        if(string.IsNullOrWhiteSpace(tipo) || 
-                            //ou o nome do campo é igual a id + um nome de tipo de referencia complexo
-                            field.Nome.ToLower() == "id"+p.PropertyType.Name.ToLower() || 
-                            //ou existe algum tipo de referencia complexo na library que seja sufixo do campo precedido de id
-                            classes.Select(x => "id"+x.Name.ToLower()).ToList().Contains(field.Nome.ToLower()))
+                        //se o tipo não foi identificado, mas o nome do campo for um tipo de referência da library, precedido ou não de Id ou o tipo for um tipo de referencia da library
+                        if(classes.Select(x => "id"+x.Name.ToLower()).ToList().Contains(field.Nome.ToLower())||
+                            classes.Select(x => x.Name.ToLower()).ToList().Contains(field.Nome.ToLower())||
+                            classes.Select(x => x.Name.ToLower()).ToList().Contains(p.PropertyType.Name.ToLower()))
                         {
+
+                            string tabreferencia = (from cc in classes
+                                                    where
+                                                         cc.Name.ToLower() == p.PropertyType.Name.ToLower() ||
+                                                         cc.Name.ToLower() == field.Nome.ToLower() ||
+                                                         field.Nome.ToLower() == "id" + cc.Name.ToLower()
+                                                    select cc.Name).ToList<string>().FirstOrDefault();
+
+                                                   
+
                             VtrForeignKey fk = new VtrForeignKey();
                             fk.NomeTabela = tb.Nome;
-                            fk.TabelaReferencia = p.PropertyType.Name;
+                            fk.TabelaReferencia = tabreferencia;
                             fk.NomeConstraint = "fk_" + fk.NomeTabela + "_" + fk.TabelaReferencia;
                             fk.CampoReferencia = "Id";
 
@@ -87,7 +95,7 @@ namespace VtrFramework.MetaData
                             field.InformacaoChaveEstrangeira = fk;
                             field.IsForeignKey = true;
                             field.Tipo = "int";
-                            field.Nome = "Id" + p.PropertyType.Name;
+                            field.Nome = "Id" + fk.TabelaReferencia;
                         }
                         else   if (!string.IsNullOrWhiteSpace(tipo))
                         {
