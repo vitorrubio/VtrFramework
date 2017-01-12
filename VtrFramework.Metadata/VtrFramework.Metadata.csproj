@@ -41,11 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IVtrFieldTypeInfo.cs" />
+    <Compile Include="IVtrModelExtrator.cs" />
     <Compile Include="IVtrTableRepository.cs" />
     <Compile Include="VtrField.cs" />
     <Compile Include="VtrMetaDataFactory.cs" />
     <Compile Include="VtrForeignKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VtrModelToMsSqlExtrator.cs" />
     <Compile Include="VtrMsSqlField.cs" />
     <Compile Include="VtrTable.cs" />
     <Compile Include="VtrMsSqlTableRepository.cs" />

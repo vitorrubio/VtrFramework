@@ -57,7 +57,8 @@ namespace VtrFramework.Infra
 
             { typeof(string),  SqlDbType.NVarChar},
             { typeof(byte[]),  SqlDbType.VarBinary},
-            { typeof(Guid),  SqlDbType.UniqueIdentifier}
+            { typeof(Guid),  SqlDbType.UniqueIdentifier},
+            { typeof(Nullable<Guid>),  SqlDbType.UniqueIdentifier}
         };
 
 
@@ -96,6 +97,61 @@ namespace VtrFramework.Infra
 
         };
 
+
+
+
+
+
+        /// <summary>
+        /// mantém um dicionário de tipos .net para MSSQL
+        /// </summary>
+        private static Dictionary<Type, string> _dotNetTypeToMsSqlType = new Dictionary<Type, string>()
+        {
+            { typeof(Int16),  "smallint"},
+            { typeof(Int32),  "int"},
+            { typeof(Int64),    "bigint"},
+            { typeof(sbyte),  "int"},
+
+            { typeof(UInt16),  "int"},
+            { typeof(UInt32),  "bigint"},
+            { typeof(UInt64),    "bigint"},
+            { typeof(byte),  "tinyint"},
+
+            { typeof(float),  "float"},
+            { typeof(decimal),  "decimal"},
+            { typeof(double),  "double precision"},
+            { typeof(bool),  "bit"},
+
+            { typeof(DateTime),  "datetime"},
+
+
+
+            { typeof(Nullable<Int16>),  "smallint"},
+            { typeof(Nullable<Int32>),  "int"},
+            { typeof(Nullable<Int64>),    "bigint"},
+            { typeof(Nullable<sbyte>),  "int"},
+
+            { typeof(Nullable<UInt16>),  "int"},
+            { typeof(Nullable<UInt32>),  "bigint"},
+            { typeof(Nullable<UInt64>),    "bigint"},
+            { typeof(Nullable<byte>),  "tinyint"},
+
+            { typeof(Nullable<float>),  "float"},
+            { typeof(Nullable<decimal>),  "decimal"},
+            { typeof(Nullable<double>),  "double precision"},
+            { typeof(Nullable<bool>),  "bit"},
+
+            { typeof(Nullable<DateTime>),  "datetime"},
+
+
+
+            { typeof(string),  "varchar"},
+            { typeof(byte[]),  "varbinary"},
+            { typeof(Guid),  "uniqueidentifier"},
+            { typeof(Nullable<Guid>),  "uniqueidentifier"}
+
+        };
+
         #endregion
 
 
@@ -129,6 +185,23 @@ namespace VtrFramework.Infra
             tp = tp.ToLower();
             if (_msSqlTypeSqlDbTypeMap.ContainsKey(tp))
                 result = _msSqlTypeSqlDbTypeMap[tp];
+
+            return result;
+        }
+
+
+
+        /// <summary>
+        /// converte um tipo .net para a string de um tipo SQL
+        /// </summary>
+        /// <param name="tp"></param>
+        /// <returns></returns>
+        public static string DotNetTypeToMsSqlType(Type tp)
+        {
+            string result = "";
+
+            if (_typeSqlDbTypeMap.ContainsKey(tp))
+                result = _dotNetTypeToMsSqlType[tp];
 
             return result;
         }

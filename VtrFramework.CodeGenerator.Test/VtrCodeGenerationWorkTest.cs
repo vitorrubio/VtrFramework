@@ -6,6 +6,7 @@ using NUnit.Framework;
 using VtrFramework.CodeGenerator;
 using VtrFramework;
 using VtrFramework.Infra;
+using VtrFramework.MetaData;
 
 namespace dllBBI.Test.Genesis.MetaData
 {
@@ -19,13 +20,13 @@ namespace dllBBI.Test.Genesis.MetaData
         {
 
             //string caminho = @"C:\temp\VtrTemplate\Source\";
-            string caminho = @"C:\Users\vitor\Dropbox\VtrFramework\VtrFramework.CodeGenerator.Test\GeneratedCode\";
+            string caminho = @"C:\temp\VtrTemplate\";
             string nameSpace = "VtrTemplate";
             
             VtrCodeGenerationWork exp = new VtrCodeGenerationWork(VtrContext.GetDB(), nameSpace, caminho);
 
             exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrAutoProperitesClassGenerator>());
-
+            exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrViewModelGenerator>());
             //gerador de repositórios com método DataRowsToEntity
             //exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrRepositoryGenerator>());
 
@@ -50,45 +51,48 @@ namespace dllBBI.Test.Genesis.MetaData
         }
 
 
+        //[Test]
+        //public void ExportarProjetoTecnunCommerceTest()
+        //{
+
+        //    //string caminho = @"C:\temp\TFWTemplate\Source\";
+        //    string caminho = @"C:\temp\TecnunCommerce\";
+        //    string nameSpace = "TecnunCommerce";
+
+        //    IVtrConnectionStringProvider provider = new VtrLiteralConnectionStringProvider(@"Data Source=.\SQLEXPRESS;Initial Catalog=TecnunCommerce;Persist Security Info=True;User ID=tecnun;Password=tecnun");
+        //    IVtrSystemDatabase db = new VtrSystemDatabase(provider);
+
+        //    VtrCodeGenerationWork exp = new VtrCodeGenerationWork(db, nameSpace, caminho);
+        //    exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrViewModelGenerator>());
+        //    exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrRepositoryGeneratorWithGenericQuery>());
+
+        //    exp.ExportarProjeto();
+
+        //}
+
 
         [Test]
-        public void SmartTestTest()
+        public void ExportarProjetoAPartirDeAssemplyTest()
         {
 
-            //string caminho = @"C:\temp\VtrTemplate\Source\";
-            string caminho = @"C:\Users\vitor\Dropbox\tecnun\ecommerce\src\smart\";
-            string nameSpace = "VtrTemplate";
 
-            VtrCodeGenerationWork exp = new VtrCodeGenerationWork(VtrContext.GetDB(
-                new VtrLiteralConnectionStringProvider(
-                      @"Data Source=.\SQLEXPRESS;Initial Catalog=smart;Persist Security Info=True;User ID=smart;Password=smart"
-                    )
-            ), nameSpace, caminho);
 
-            exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrAutoProperitesClassGenerator>());
+            VtrModelToMsSqlExtrator extrator = new VtrModelToMsSqlExtrator(@"C:\Users\vitor\Desktop\LibraryMarota\LibraryMarota\bin\Debug\LibraryMarota.dll",
+                "LibraryMarota.Domain.DomainModel",
+                "dbo",
+                "VtrTemplate");
 
+            var tabelas = extrator.GetTables();
+
+
+
+            VtrCodeGenerationWork exp = new VtrCodeGenerationWork(VtrContext.GetDB(), "LibraryMarota", @"c:\temp\libmarota\");
+
+
+            exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrRepositoryGeneratorWithGenericQuery>());
             exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrViewModelGenerator>());
 
-            //gerador de repositórios com método DataRowsToEntity
-            //exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrRepositoryGenerator>());
-
-            //gerador de repositórios usando Query<> genérico
-            exp.GeneratorFactories.Add(new VtrGeneratorFactory<VtrRepositoryGeneratorWithGenericQuery>());
-
-            //exp.GeneratorFactories.Add(new ExportadorFactory<ExportadorWidgetsDePopUpModal>());
-            //exp.GeneratorFactories.Add(new ExportadorFactory<ExportadorWidgetsDeMioloDeFormulario>());
-
-            //exp.GeneratorFactories.Add(new ExportadorFactory<DeletadorTriggerUpdate>());
-            //exp.GeneratorFactories.Add(new ExportadorFactory<DeletadorTriggerInsteadOfDelete>());
-            //exp.GeneratorFactories.Add(new ExportadorFactory<DeletadorTriggerDelete>());
-
-            //exp.GeneratorFactories.Add(new ExportadorFactory<ExportadorTabelaDeLog>());
-            //exp.GeneratorFactories.Add(new ExportadorFactory<ExportadorTriggerUpdate>());
-            //exp.GeneratorFactories.Add(new ExportadorFactory<ExportadorTriggerInsteadOfDelete>());
-            //exp.GeneratorFactories.Add(new ExportadorFactory<ExportadorTriggerDelete>());
-
-
-            exp.ExportarProjeto();
+            exp.ExportarProjeto(tabelas);
 
         }
     }

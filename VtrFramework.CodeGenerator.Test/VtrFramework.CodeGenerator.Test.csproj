@@ -59,6 +59,10 @@
       <Project>{af0555b9-2bf2-4c5c-95cb-31eb55c8df15}</Project>
       <Name>VtrFramework.CodeGenerator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VtrFramework.Metadata\VtrFramework.MetaData.csproj">
+      <Project>{1171EC6F-0B2F-4276-9D84-059C3AF69DF1}</Project>
+      <Name>VtrFramework.MetaData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VtrFramework\VtrFramework.csproj">
       <Project>{14c54a1d-116b-4cf7-8c03-8baa8b6ea344}</Project>
       <Name>VtrFramework</Name>
